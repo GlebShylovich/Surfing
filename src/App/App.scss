@@ -1,0 +1,15 @@
+@import "../Styles/_vars.scss";
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    font-family: $family;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    padding: 0 15px;
+    margin: 0 auto;
+}
