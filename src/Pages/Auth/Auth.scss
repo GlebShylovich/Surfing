@@ -56,7 +56,7 @@
         }
 
         .auth__registerBtn {
-            @include primaryBtn(#E2E7EF, 1px solid #E2E7EF, #4D484A)
+            @include primaryBtn($lightGray, 1px solid $lightGray, #4D484A, #E2E7EF, 1px solid #E2E7EF)
         }
     }
 
@@ -73,6 +73,7 @@
     &__privacyPolicy {
         color: $slateGray;
         text-decoration: underline;
+        cursor: pointer;
     }
 }
 
