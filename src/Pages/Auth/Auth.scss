@@ -1,0 +1,95 @@
+@import '../../Styles/vars';
+@import '../../Styles/template';
+
+.auth {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: authFadeIn 10s;
+
+    &__branding {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        column-gap: 10px;
+        margin-bottom: 60px;
+
+        .auth__logo {
+            width: 69.82px;
+            height: 69.82px;
+        }
+
+        .auth__name {
+            font-size: 23px;
+            font-weight: 900;
+            color: $black;
+        }
+    }
+
+    &__title {
+        font-weight: $bold;
+        color: $black;
+        text-align: center;
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+
+    &__subtitle {
+        font-weight: $regular;
+        font-size: 16px;
+        line-height: 24px;
+        text-align: center;
+        color: $slateGray;
+    }
+
+    &__action {
+        margin: 80px 0;
+        display: flex;
+        flex-direction: column;
+        row-gap: 25px;
+        width: 330px;
+
+        .auth__loginBtn {
+            @include primaryBtn();
+        }
+
+        .auth__registerBtn {
+            @include primaryBtn(#E2E7EF, 1px solid #E2E7EF, #4D484A)
+        }
+    }
+
+    &__termsAndConditions {
+        font-size: 16px;
+        color: #a2a2a2;
+        font-weight: $regular;
+        line-height: -1px;
+        letter-spacing: 0%;
+        text-align: center;
+    }
+
+    &__userAgreement,
+    &__privacyPolicy {
+        color: $slateGray;
+        text-decoration: underline;
+    }
+}
+
+@keyframes authFadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.5;
+    }
+
+    25% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

@@ -1,0 +1,19 @@
+@import "./vars";
+
+@mixin primaryBtn($bg: #1995F5, $border: 1px solid $bg, $color: #FFFFFF, $hoverBg: $mediumBlue, $hoverBorder: 1px solid $mediumBlue) {
+    font-family: $family;
+    width: 100%;
+    background: $bg;
+    border: $border;
+    border-radius: 15px;
+    padding: 20px 0;
+    color: $color;
+    font-weight: $bold;
+    font-size: 16px;
+    transition: 0.3s ease;
+
+    &:hover {
+        background: $hoverBg;
+        border: $hoverBorder;
+    }
+}

@@ -1,13 +1,16 @@
 import { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom";
 import logo from "../../img/logo.png"
 import "./Animation.scss"
 
 export default function Animation() {
   const [isShown, setIsShown] = useState(true);
+  const navigate = useNavigate()
 
   useEffect(() => {
     setTimeout(() => {
       setIsShown(false);
+      navigate('/auth')
     }, 10000);
   }, []);
 
@@ -20,9 +23,6 @@ export default function Animation() {
             <span className="animation__name">surfvoyage</span>
           </div>
         </div>
-      )}
-      {!isShown && (
-        <div className="auth"></div>
       )}
     </>
   )
