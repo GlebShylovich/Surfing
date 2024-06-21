@@ -1,8 +1,7 @@
 import firebase from 'firebase/compat/app'
-import config from "../config.js";
+import config from "../../config";
 import 'firebase/compat/database'
-import { useQuery, useMutation, useQueryClient } from 'react-query'
-import { update } from 'firebase/database';
+import { useMutation, useQueryClient } from 'react-query'
 const app = firebase.initializeApp(config)
 const db = app.database()
 export function useAddData() {
