@@ -17,3 +17,19 @@
         border: $hoverBorder;
     }
 }
+
+@mixin input($border: 1px solid $lightGray) {
+    font-family: $family;
+    height: 58px;
+    border: $border;
+    border-radius: 10px;
+    background: $lightGray;
+    color: $slateGray;
+    padding-left: 20px;
+    font-size: 16px;
+    font-weight: $regular;
+    line-height: -1px;
+    letter-spacing: 0%;
+    text-align: left;
+    outline: none;
+}
