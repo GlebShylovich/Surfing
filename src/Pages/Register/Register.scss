@@ -35,12 +35,12 @@
         width: 330px;
         display: flex;
         flex-direction: column;
-        align-items: center;
 
         .register__finishSuccess {
             position: relative;
             width: 160px;
             height: 160px;
+            margin: 0 auto;
             margin-bottom: 20px;
             display: flex;
             align-items: center;
@@ -144,8 +144,7 @@
             }
 
             .register__emailBtn,
-            .register__passwordBtn,
-            .register__finishBtn {
+            .register__passwordBtn {
                 margin-top: 40px;
                 @include primaryBtn;
             }
