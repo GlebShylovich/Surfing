@@ -52,10 +52,25 @@
                 text-align: left;
                 margin-bottom: 8px;
             }
+            .login__emailLabel--error,
+            .login__passwordLabel--error {
+                color: $lightRed;
+                font-size: 14px;
+                font-weight: 700;
+                line-height: -1px;
+                letter-spacing: 0%;
+                text-align: left;
+                margin-bottom: 8px;
+            }
 
             .login__emailInput,
             .login__passwordInput {
                 @include input;
+            }
+
+            .login__emailInput--error,
+            .login__passwordInput--error {
+                @include input(2px solid $lightRed)
             }
 
             input[type="password"]::-ms-reveal,
