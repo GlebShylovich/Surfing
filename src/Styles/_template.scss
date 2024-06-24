@@ -18,7 +18,7 @@
     }
 }
 
-@mixin input($border: 1px solid $lightGray) {
+@mixin input($border: 2px solid $lightGray) {
     font-family: $family;
     height: 58px;
     border: $border;

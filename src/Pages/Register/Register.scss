@@ -29,6 +29,7 @@
         text-align: center;
     }
 
+    &__nameBox,
     &__emailBox,
     &__passwordBox,
     &__finishBox {
@@ -66,7 +67,7 @@
             }
         }
 
-
+        .register__nameForm,
         .register__emailForm,
         .register__passwordForm {
             margin-top: 40px;
@@ -74,6 +75,7 @@
             display: flex;
             flex-direction: column;
 
+            .register__nameLabel,
             .register__emailLabel,
             .register__passwordLabel {
                 color: $slateGray;
@@ -85,9 +87,28 @@
                 margin-bottom: 8px;
             }
 
+            .register__nameLabel--error,
+            .register__emailLabel--error,
+            .register__passwordLabel--error {
+                color: $lightRed;
+                font-size: 14px;
+                font-weight: 700;
+                line-height: -1px;
+                letter-spacing: 0%;
+                text-align: left;
+                margin-bottom: 8px;
+            }
+
+            .register__nameInput,
             .register__emailInput,
             .register__passwordInput {
                 @include input;
+            }
+
+            .register__nameInput--error,
+            .register__emailInput--error,
+            .register__passwordInput--error {
+                @include input(2px solid $lightRed)
             }
 
             input[type="password"]::-ms-reveal,
@@ -125,10 +146,50 @@
                         display: flex;
                         align-items: center;
                         column-gap: 10px;
+                        row-gap: 15px;
 
-                        & input {
+                        .register__errorCheckbox+label::before {
+                            content: '';
+                            position: absolute;
+                            left: 0;
+                            top: 0;
                             width: 15px;
                             height: 15px;
+                            border-radius: 1px;
+                            border: 2px solid $lightRed;
+                        }
+
+                        & input {
+                            display: none;
+                        }
+
+                        & input+label {
+                            position: relative;
+                            padding-left: 25px;
+                            height: 15px;
+                            display: flex;
+                            align-items: center;
+                            cursor: pointer;
+                            user-select: none;
+                        }
+
+                        & input+label:before {
+                            content: '';
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+                            width: 15px;
+                            height: 15px;
+                            border-radius: 1px;
+                            border: 2px solid $black;
+                        }
+
+                        & input:checked+label::before {
+                            border: 2px solid #1995F5;
+                            color: white;
+                            background: #1995F5;
+                            background-image: url(../../assets/checkmark.svg);
+                            background-size: cover;
                         }
 
                         & label {
@@ -143,6 +204,7 @@
                 }
             }
 
+            .register__nameBtn,
             .register__emailBtn,
             .register__passwordBtn {
                 margin-top: 40px;
