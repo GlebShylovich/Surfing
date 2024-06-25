@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
+import PasswordRecovery from '../../Components/PasswordRecovery/PasswordRecovery';
 import './Login.scss'
 export default function Login() {
   const [email, setEmail] = useState('')
@@ -8,6 +9,7 @@ export default function Login() {
   const [error, setError] = useState(false)
   const [isShowEmailBox, setIsShowEmailBox] = useState(true)
   const [isShowPasswordBox, setIsShowPasswordBox] = useState(false)
+  const [modal, setModal] = useState(false)
 
   const auth = getAuth();
   const navigate = useNavigate();
@@ -38,7 +40,8 @@ export default function Login() {
         navigate('/')
       })
       .catch((error) => {
-        console.log(error)
+        const errorCode = error.code;
+        const errorMessage = error.message;
       });
   }
   return (
@@ -63,9 +66,10 @@ export default function Login() {
             <input value={password} onChange={(e)=>{setPassword(e.target.value)}} className={error && !password ? 'login__passwordInput--error' : 'login__passwordInput'} type='password' />
             <button className='login__passwordBtn'>Next</button>
           </form>
-          <p className='login__passwordRecovery'>Forgot your password?</p>
+          <p onClick={()=>{setModal(true)}} className='login__passwordRecovery'>Forgot your password?</p>
         </div>
       )}
+      {modal && (<PasswordRecovery email={email}/>)}
     </div>
   )
 }
