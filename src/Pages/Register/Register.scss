@@ -2,11 +2,26 @@
 @import '../../Styles/template';
 
 .register {
+    position: relative;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    .backBtn{
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        background: transparent;
+        outline: none;
+        top: 25px;
+        left: 25px;
+    }
 
     &__title {
         color: $black;
