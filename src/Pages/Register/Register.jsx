@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { setUser } from "../../Services/slices/user";
+import { getAuth } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import backbtn from '../../assets/backbtn.svg'
+import { register } from "../../Common/auth";
+import backbtn from "../../assets/backbtn.svg";
 import success from "../../assets/success.svg";
 import "./Register.scss";
 
@@ -53,7 +53,6 @@ export default function Register() {
       setIsShowPasswordBox(true);
     }
   }
-
   function registerUser(e) {
     e.preventDefault();
     if (!passwordLength || !passwordAlphabet || !passwordLetters) {
@@ -61,26 +60,13 @@ export default function Register() {
       setPassword("");
       return;
     }
+    register(auth, email, password, name);
     setError(false);
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        dispatch(
-          setUser({
-            email: email,
-            name: name,
-            id: userCredential.user.uid,
-          })
-        );
-        setName("");
-        setEmail("");
-        setPassword("");
-        setIsShowPasswordBox(false);
-        setIsShowFinishBox(true);
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-      });
+    setName("");
+    setEmail("");
+    setPassword("");
+    setIsShowPasswordBox(false);
+    setIsShowFinishBox(true);
   }
 
   return (
@@ -175,7 +161,7 @@ export default function Register() {
           <button
             onClick={() => {
               setIsShowEmailBox(true);
-              setIsShowPasswordBox(false)
+              setIsShowPasswordBox(false);
             }}
             className="backBtn"
           >
@@ -186,7 +172,10 @@ export default function Register() {
             <span className="register__subtitle register__subtitle--password">
               Create a password to log in to your profile
             </span>
-            <form onSubmit={registerUser} className="register__passwordForm">
+            <form
+              onSubmit={registerUser}
+              className="register__passwordForm"
+            >
               <label
                 className={
                   error && !password
