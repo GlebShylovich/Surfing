@@ -258,7 +258,7 @@ export default function Register() {
           </div>
           <button
             onClick={() => {
-              navigate("/login");
+              navigate("/");
             }}
             className="register__finishBtn"
           >

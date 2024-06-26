@@ -5,14 +5,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: animationFadeOut 10s;
+    animation: animationFadeOut 5s;
 
     &__branding {
         display: flex;
         align-items: center;
         justify-content: space-between;
         column-gap: 5px;
-        animation: animationFadeIn 7.5s;
+        animation: animationFadeIn 7.5s infinite;
 
         .animation__logo {
             width: 88.72px;
@@ -25,10 +25,6 @@
             color: $black;
         }
     }
-}
-
-.auth {
-    animation: authFadeIn 10s infinite;
 }
 
 @keyframes animationFadeIn {
@@ -72,27 +68,5 @@
 
     100% {
         opacity: 0;
-    }
-}
-
-@keyframes authFadeIn {
-    0% {
-        opacity: 0;
-    }
-
-    20% {
-        opacity: 0.5;
-    }
-
-    35% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 1;
     }
 }

@@ -17,7 +17,7 @@ export default function Animation() {
       setTimeout(() => {
         setIsShown(false);
         navigate('/auth')
-      }, 10000);
+      }, 5000);
     }
   }, [auth.currentUser]);
 
