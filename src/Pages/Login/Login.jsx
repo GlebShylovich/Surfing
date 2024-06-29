@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { getAuth } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { login } from "../../Common/auth"
+import { login } from "../../Common/auth";
 import PasswordRecovery from "../../Components/PasswordRecovery/PasswordRecovery";
 import backbtn from "../../assets/backbtn.svg";
 import "./Login.scss";
@@ -33,7 +33,7 @@ export default function Login() {
       setPassword("");
       return;
     }
-    login(auth, email, password)
+    login(auth, email, password);
   }
   return (
     <div className="login">
@@ -93,10 +93,7 @@ export default function Login() {
           <div className="login__passwordBox">
             <h1 className="login__title">Enter the password</h1>
             <span className="login__subtitle">for the profile to log in</span>
-            <form
-              onSubmit={loginUser}
-              className="login__passwordForm"
-            >
+            <form onSubmit={loginUser} className="login__passwordForm">
               <label
                 className={
                   error && !password
@@ -109,6 +106,7 @@ export default function Login() {
               <input
                 value={password}
                 onChange={(e) => {
+                  passwordValidation(e.target.value);
                   setPassword(e.target.value);
                 }}
                 className={

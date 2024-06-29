@@ -11,6 +11,7 @@
     font-weight: $bold;
     font-size: 16px;
     transition: 0.3s ease;
+    outline: none;
 
     &:hover {
         background: $hoverBg;

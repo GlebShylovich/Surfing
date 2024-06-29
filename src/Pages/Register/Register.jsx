@@ -19,6 +19,7 @@ export default function Register() {
   const [isShowEmailBox, setIsShowEmailBox] = useState(false);
   const [isShowPasswordBox, setIsShowPasswordBox] = useState(false);
   const [isShowFinishBox, setIsShowFinishBox] = useState(false);
+  const [isValidEmail, setIsValidEmail] = useState(true);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -31,6 +32,10 @@ export default function Register() {
     setPasswordLetters(/\d/.test(password) && /[a-zA-Z]/.test(password));
     setPasswordAlphabet(/^[a-zA-Z0-9]*$/.test(password));
   }
+  
+  function emailValidation() {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }  
 
   function handleNameBtn(e) {
     e.preventDefault();
@@ -47,8 +52,13 @@ export default function Register() {
     e.preventDefault();
     if (!email) {
       setError(true);
+      setIsValidEmail(true);
+    } else if (!emailValidation()) {
+      setError(false);
+      setIsValidEmail(false);
     } else {
       setError(false);
+      setIsValidEmail(true);
       setIsShowEmailBox(false);
       setIsShowPasswordBox(true);
     }
@@ -132,20 +142,18 @@ export default function Register() {
             <form onSubmit={handleEmailBtn} className="register__emailForm">
               <label
                 className={
-                  error && !email
+                  error && !email || !isValidEmail
                     ? "register__emailLabel--error"
                     : "register__emailLabel"
                 }
               >
-                {error && !email ? "Enter your email" : "Your email"}
+                {error && !email ? "Enter your email" : isValidEmail ? "Your email" : "Check your email spelling"}
               </label>
               <input
                 value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
+                onChange={(e)=>{setEmail(e.target.value)}}
                 className={
-                  error && !email
+                  error && !email || !isValidEmail
                     ? "register__emailInput--error"
                     : "register__emailInput"
                 }
@@ -172,10 +180,7 @@ export default function Register() {
             <span className="register__subtitle register__subtitle--password">
               Create a password to log in to your profile
             </span>
-            <form
-              onSubmit={registerUser}
-              className="register__passwordForm"
-            >
+            <form onSubmit={registerUser} className="register__passwordForm">
               <label
                 className={
                   error && !password
