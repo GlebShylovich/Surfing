@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { getAuth } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { login } from "../../Common/auth";
+import { login, emailValidation } from "../../Common/auth";
+import { checkEmailExists } from "../../Services/services";
 import PasswordRecovery from "../../Components/PasswordRecovery/PasswordRecovery";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 import backbtn from "../../assets/backbtn.svg";
 import "./Login.scss";
 export default function Login() {
@@ -12,16 +14,32 @@ export default function Login() {
   const [isShowEmailBox, setIsShowEmailBox] = useState(true);
   const [isShowPasswordBox, setIsShowPasswordBox] = useState(false);
   const [modal, setModal] = useState(false);
+  const [isValidEmail, setIsValidEmail] = useState(true);
+  const [isUserExist, setIsUserExist] = useState(true);
+  const [showPassword, setShowPassword] = useState(false);
 
   const auth = getAuth();
   const navigate = useNavigate();
 
-  function handleEmailBtn(e) {
+  async function handleEmailBtn(e) {
     e.preventDefault();
+    const emailExists = await checkEmailExists(email);
     if (!email) {
       setError(true);
+      setIsValidEmail(true);
+      setIsUserExist(true);
+    } else if (!emailValidation(email)) {
+      setError(false);
+      setIsValidEmail(false);
+      setIsUserExist(true);
+    } else if (!emailExists) {
+      setError(false);
+      setIsValidEmail(true);
+      setIsUserExist(false);
     } else {
       setError(false);
+      setIsValidEmail(true);
+      setIsUserExist(true);
       setIsShowEmailBox(false);
       setIsShowPasswordBox(true);
     }
@@ -34,6 +52,8 @@ export default function Login() {
       return;
     }
     login(auth, email, password);
+    setEmail("");
+    setPassword("");
   }
   return (
     <div className="login">
@@ -52,15 +72,25 @@ export default function Login() {
             <span className="login__subtitle">
               Enter your email address to log in
             </span>
-            <form onSubmit={handleEmailBtn} className="login__emailForm">
+            <form
+              onSubmit={handleEmailBtn}
+              className="login__emailForm"
+              noValidate
+            >
               <label
                 className={
-                  error && !email
+                  (error && !email) || !isValidEmail || !isUserExist
                     ? "login__emailLabel--error"
                     : "login__emailLabel"
                 }
               >
-                {error && !email ? "Enter your email" : "Your email"}
+                {error && !email
+                  ? "Enter your email"
+                  : !isValidEmail
+                  ? "Check your email spelling"
+                  : !isUserExist
+                  ? "No such user found"
+                  : "Your email"}
               </label>
               <input
                 value={email}
@@ -68,7 +98,7 @@ export default function Login() {
                   setEmail(e.target.value);
                 }}
                 className={
-                  error && !email
+                  (error && !email) || !isValidEmail || !isUserExist
                     ? "login__emailInput--error"
                     : "login__emailInput"
                 }
@@ -103,19 +133,33 @@ export default function Login() {
               >
                 {error && !password ? "Invalid password" : "Password"}
               </label>
-              <input
-                value={password}
-                onChange={(e) => {
-                  passwordValidation(e.target.value);
-                  setPassword(e.target.value);
-                }}
-                className={
-                  error && !password
-                    ? "login__passwordInput--error"
-                    : "login__passwordInput"
-                }
-                type="password"
-              />
+              <div className="login__passwordBox-inputBox">
+                <input
+                  value={password}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                  className={
+                    error && !password
+                      ? "login__passwordInput--error"
+                      : "login__passwordInput"
+                  }
+                  type={showPassword ? "text" : "password"}
+                />
+                {showPassword ? (
+                  <FaRegEyeSlash
+                    onClick={() => {
+                      setShowPassword(false);
+                    }}
+                  />
+                ) : (
+                  <FaRegEye
+                    onClick={() => {
+                      setShowPassword(true);
+                    }}
+                  />
+                )}
+              </div>
               <button className="login__passwordBtn">Next</button>
             </form>
             <p

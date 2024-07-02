@@ -6,10 +6,7 @@ import { setUser } from "../Services/slices/user";
 
 export function login(auth, email, password) {
   signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      setEmail("");
-      setPassword("");
+    .then(() => {
       navigate("/");
     })
     .catch((error) => {
@@ -18,19 +15,24 @@ export function login(auth, email, password) {
     });
 }
 
-export function register(auth, email, password, name) {
+export function register(auth, email, password, name, database, dispatch) {
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      dispatch(
-        setUser({
-          email: email,
-          name: name,
-          id: userCredential.user.uid,
-        })
-      );
+      const user = userCredential.user;
+      const object = {
+        email: email,
+        id: user.uid,
+        name: name,
+      };
+      dispatch(setUser(object));
+      database(user);
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
     });
+}
+
+export function emailValidation(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }

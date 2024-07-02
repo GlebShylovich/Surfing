@@ -1,8 +1,10 @@
 import { useState } from "react";
-import { getAuth } from "firebase/auth";
-import { useDispatch } from "react-redux";
+import { getAuth, updateProfile } from "firebase/auth";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { register } from "../../Common/auth";
+import { register, emailValidation } from "../../Common/auth";
+import { useAddData, checkEmailExists } from "../../Services/services";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 import backbtn from "../../assets/backbtn.svg";
 import success from "../../assets/success.svg";
 import "./Register.scss";
@@ -20,22 +22,27 @@ export default function Register() {
   const [isShowPasswordBox, setIsShowPasswordBox] = useState(false);
   const [isShowFinishBox, setIsShowFinishBox] = useState(false);
   const [isValidEmail, setIsValidEmail] = useState(true);
+  const [usedEmailError, setUsedEmailError] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const auth = getAuth();
+  const addDataMutation = useAddData();
 
   function passwordValidation(e) {
     const password = e.target.value;
     setPassword(password);
+    if (!password) {
+      setPasswordLength(false);
+      setPasswordLetters(false);
+      setPasswordAlphabet(false);
+      return;
+    }
     setPasswordLength(password.length >= 8);
     setPasswordLetters(/\d/.test(password) && /[a-zA-Z]/.test(password));
     setPasswordAlphabet(/^[a-zA-Z0-9]*$/.test(password));
   }
-  
-  function emailValidation() {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  }  
 
   function handleNameBtn(e) {
     e.preventDefault();
@@ -48,17 +55,28 @@ export default function Register() {
     }
   }
 
-  function handleEmailBtn(e) {
+  async function handleEmailBtn(e) {
     e.preventDefault();
+    const emailExists = await checkEmailExists(email);
     if (!email) {
       setError(true);
       setIsValidEmail(true);
-    } else if (!emailValidation()) {
+      setUsedEmailError(false);
+      setUsedEmailError(false);
+    } else if (!emailValidation(email)) {
       setError(false);
       setIsValidEmail(false);
+      setUsedEmailError(false);
+      setUsedEmailError(false);
+    } else if (emailExists) {
+      setError(false);
+      setIsValidEmail(true);
+      setUsedEmailError(true);
     } else {
       setError(false);
       setIsValidEmail(true);
+      setUsedEmailError(false);
+      setUsedEmailError(false);
       setIsShowEmailBox(false);
       setIsShowPasswordBox(true);
     }
@@ -70,13 +88,26 @@ export default function Register() {
       setPassword("");
       return;
     }
-    register(auth, email, password, name);
+    register(auth, email, password, name, database, dispatch);
     setError(false);
     setName("");
     setEmail("");
     setPassword("");
     setIsShowPasswordBox(false);
     setIsShowFinishBox(true);
+  }
+
+  function database(user) {
+    const object = {
+      email: email,
+      name: name,
+      id: user.uid,
+    };
+    addDataMutation.mutateAsync(object).then((databaseResponse) => {
+      updateProfile(user, {
+        displayName: databaseResponse,
+      });
+    });
   }
 
   return (
@@ -139,21 +170,33 @@ export default function Register() {
             <span className="register__subtitle register__subtitle--email">
               Enter your email address to log in
             </span>
-            <form onSubmit={handleEmailBtn} className="register__emailForm">
+            <form
+              onSubmit={handleEmailBtn}
+              className="register__emailForm"
+              noValidate
+            >
               <label
                 className={
-                  error && !email || !isValidEmail
+                  (error && !email) || !isValidEmail || usedEmailError
                     ? "register__emailLabel--error"
                     : "register__emailLabel"
                 }
               >
-                {error && !email ? "Enter your email" : isValidEmail ? "Your email" : "Check your email spelling"}
+                {error && !email
+                  ? "Enter your email"
+                  : !isValidEmail
+                  ? "Check your email spelling"
+                  : usedEmailError
+                  ? "Email is already in use"
+                  : "Your email"}
               </label>
               <input
                 value={email}
-                onChange={(e)=>{setEmail(e.target.value)}}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
                 className={
-                  error && !email || !isValidEmail
+                  (error && !email) || !isValidEmail || usedEmailError
                     ? "register__emailInput--error"
                     : "register__emailInput"
                 }
@@ -190,16 +233,31 @@ export default function Register() {
               >
                 {error && !password ? "Password is invalid" : "Create password"}
               </label>
-              <input
-                value={password}
-                onChange={passwordValidation}
-                className={
-                  error && !password
-                    ? "register__passwordInput--error"
-                    : "register__passwordInput"
-                }
-                type="password"
-              />
+              <div className="register__passwordBox-inputBox">
+                <input
+                  value={password}
+                  onChange={passwordValidation}
+                  className={
+                    error && !password
+                      ? "register__passwordInput--error"
+                      : "register__passwordInput"
+                  }
+                  type={showPassword ? "text" : "password"}
+                />
+                {showPassword ? (
+                  <FaRegEyeSlash
+                    onClick={() => {
+                      setShowPassword(false);
+                    }}
+                  />
+                ) : (
+                  <FaRegEye
+                    onClick={() => {
+                      setShowPassword(true);
+                    }}
+                  />
+                )}
+              </div>
               <div className="register__passwordRequirements">
                 <span className="register__passwordRequirementsTitle">
                   Password requirements:

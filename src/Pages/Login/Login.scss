@@ -1,117 +1,129 @@
-@import '../../Styles/vars';
-@import '../../Styles/template';
+@import "../../Styles/vars";
+@import "../../Styles/template";
 
 .login {
-    position: relative;
-    min-height: 100vh;
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .backBtn {
+    position: absolute;
+    width: 25px;
+    height: 25px;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    border: none;
+    background: transparent;
+    outline: none;
+    top: 25px;
+    left: 25px;
+  }
 
-    .backBtn{
-        position: absolute;
-        width: 25px;
-        height: 25px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: none;
-        background: transparent;
-        outline: none;
-        top: 25px;
-        left: 25px;
-    }
+  &__title {
+    color: $black;
+    font-family: $family;
+    font-size: 24px;
+    font-weight: 900;
+    line-height: 29px;
+    letter-spacing: 0%;
+    margin-bottom: 10px;
+    text-align: center;
+  }
 
-    &__title {
-        color: $black;
-        font-family: $family;
-        font-size: 24px;
-        font-weight: 900;
-        line-height: 29px;
-        letter-spacing: 0%;
-        margin-bottom: 10px;
-        text-align: center;
-    }
+  &__subtitle {
+    color: $slateGray;
+    font-family: $family;
+    font-size: 16px;
+    font-weight: $regular;
+    line-height: -1px;
+    letter-spacing: 0%;
+    text-align: center;
+  }
 
-    &__subtitle {
+  &__emailBox,
+  &__passwordBox {
+    width: 330px;
+    display: flex;
+    flex-direction: column;
+
+    .login__emailForm,
+    .login__passwordForm {
+      margin-top: 40px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+
+      .login__emailLabel,
+      .login__passwordLabel {
         color: $slateGray;
-        font-family: $family;
-        font-size: 16px;
-        font-weight: $regular;
+        font-size: 14px;
+        font-weight: 700;
         line-height: -1px;
         letter-spacing: 0%;
-        text-align: center;
+        text-align: left;
+        margin-bottom: 8px;
+      }
+      .login__emailLabel--error,
+      .login__passwordLabel--error {
+        color: $lightRed;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: -1px;
+        letter-spacing: 0%;
+        text-align: left;
+        margin-bottom: 8px;
+      }
+
+      .login__passwordBox-inputBox {
+        width: 100%;
+        position: relative;
+        & svg {
+          height: 18px;
+          position: absolute;
+          right: 18px;
+          top: 20px;
+          z-index: 1;
+        }
+      }
+
+      .login__emailInput,
+      .login__passwordInput {
+        @include input;
+      }
+
+      .login__emailInput--error,
+      .login__passwordInput--error {
+        @include input(2px solid $lightRed);
+      }
+
+      input[type="password"]::-ms-reveal,
+      input[type="password"]::-ms-clear,
+      input[type="password"]::-webkit-credentials-auto-fill-button,
+      input[type="password"]::-webkit-clear-button {
+        display: none;
+      }
+
+      .login__emailBtn,
+      .login__passwordBtn {
+        margin-top: 40px;
+        @include primaryBtn;
+      }
     }
 
-    &__emailBox,
-    &__passwordBox {
-        width: 330px;
-        display: flex;
-        flex-direction: column;
-
-        .login__emailForm,
-        .login__passwordForm {
-            margin-top: 40px;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-
-            .login__emailLabel,
-            .login__passwordLabel {
-                color: $slateGray;
-                font-size: 14px;
-                font-weight: 700;
-                line-height: -1px;
-                letter-spacing: 0%;
-                text-align: left;
-                margin-bottom: 8px;
-            }
-            .login__emailLabel--error,
-            .login__passwordLabel--error {
-                color: $lightRed;
-                font-size: 14px;
-                font-weight: 700;
-                line-height: -1px;
-                letter-spacing: 0%;
-                text-align: left;
-                margin-bottom: 8px;
-            }
-
-            .login__emailInput,
-            .login__passwordInput {
-                @include input;
-            }
-
-            .login__emailInput--error,
-            .login__passwordInput--error {
-                @include input(2px solid $lightRed)
-            }
-
-            input[type="password"]::-ms-reveal,
-            input[type="password"]::-ms-clear,
-            input[type="password"]::-webkit-credentials-auto-fill-button,
-            input[type="password"]::-webkit-clear-button {
-                display: none;
-            }
-
-            .login__emailBtn,
-            .login__passwordBtn {
-                margin-top: 40px;
-                @include primaryBtn;
-            }
-        }
-
-        .login__passwordRecovery {
-            color: $slateGray;
-            font-family: $family;
-            font-size: 16px;
-            font-weight: $regular;
-            line-height: -1px;
-            letter-spacing: 0%;
-            text-align: left;
-            text-decoration: underline;
-            margin-top: 30px;
-        }
+    .login__passwordRecovery {
+      color: $slateGray;
+      font-family: $family;
+      font-size: 16px;
+      font-weight: $regular;
+      line-height: -1px;
+      letter-spacing: 0%;
+      text-align: left;
+      text-decoration: underline;
+      margin-top: 30px;
     }
+  }
 }

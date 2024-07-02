@@ -20,6 +20,7 @@
 }
 
 @mixin input($border: 2px solid $lightGray) {
+    width: 100%;
     font-family: $family;
     height: 58px;
     border: $border;
