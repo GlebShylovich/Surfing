@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { getAuth } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { login, emailValidation } from "../../Common/auth";
@@ -17,9 +17,19 @@ export default function Login() {
   const [isValidEmail, setIsValidEmail] = useState(true);
   const [isUserExist, setIsUserExist] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
+  const emailRef = useRef(null);
+  const passwordRef = useRef(null);
 
   const auth = getAuth();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isShowEmailBox) {
+      emailRef.current.focus();
+    } else if (isShowPasswordBox) {
+      passwordRef.current.focus();
+    }
+  }, [isShowEmailBox, isShowPasswordBox]);
 
   async function handleEmailBtn(e) {
     e.preventDefault();
@@ -51,7 +61,7 @@ export default function Login() {
       setPassword("");
       return;
     }
-    login(auth, email, password);
+    login(auth, email, password, navigate);
     setEmail("");
     setPassword("");
   }
@@ -93,6 +103,7 @@ export default function Login() {
                   : "Your email"}
               </label>
               <input
+                ref={emailRef}
                 value={email}
                 onChange={(e) => {
                   setEmail(e.target.value);
@@ -135,6 +146,7 @@ export default function Login() {
               </label>
               <div className="login__passwordBox-inputBox">
                 <input
+                  ref={passwordRef}
                   value={password}
                   onChange={(e) => {
                     setPassword(e.target.value);

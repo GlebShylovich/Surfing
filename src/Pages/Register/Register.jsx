@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { getAuth, updateProfile } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -24,11 +24,24 @@ export default function Register() {
   const [isValidEmail, setIsValidEmail] = useState(true);
   const [usedEmailError, setUsedEmailError] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const usernameRef = useRef(null);
+  const emailRef = useRef(null);
+  const passwordRef = useRef(null);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const auth = getAuth();
   const addDataMutation = useAddData();
+
+  useEffect(() => {
+    if (isShowNameBox) {
+      usernameRef.current.focus();
+    } else if (isShowEmailBox) {
+      emailRef.current.focus();
+    } else if (isShowPasswordBox) {
+      passwordRef.current.focus();
+    }
+  }, [isShowNameBox, isShowEmailBox, isShowPasswordBox]);
 
   function passwordValidation(e) {
     const password = e.target.value;
@@ -138,6 +151,7 @@ export default function Register() {
                 {error && !name ? "Enter your username" : "Your username"}
               </label>
               <input
+                ref={usernameRef}
                 value={name}
                 onChange={(e) => {
                   setName(e.target.value);
@@ -191,6 +205,7 @@ export default function Register() {
                   : "Your email"}
               </label>
               <input
+                ref={emailRef}
                 value={email}
                 onChange={(e) => {
                   setEmail(e.target.value);
@@ -235,6 +250,7 @@ export default function Register() {
               </label>
               <div className="register__passwordBox-inputBox">
                 <input
+                  ref={passwordRef}
                   value={password}
                   onChange={passwordValidation}
                   className={

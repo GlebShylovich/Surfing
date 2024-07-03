@@ -4,7 +4,7 @@ import {
 } from "firebase/auth";
 import { setUser } from "../Services/slices/user";
 
-export function login(auth, email, password) {
+export function login(auth, email, password, navigate) {
   signInWithEmailAndPassword(auth, email, password)
     .then(() => {
       navigate("/");
