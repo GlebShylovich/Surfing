@@ -6,12 +6,12 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   .backBtn {
     @include backBtn;
   }
   .account__container {
+    margin-top: 65px;
     width: 330px;
     display: flex;
     flex-direction: column;

@@ -1,0 +1,18 @@
+.loading{
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    color: #1995F5;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    animation: loop 2s infinite ease;
+}
+@keyframes loop {
+    0%{
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100%{
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}

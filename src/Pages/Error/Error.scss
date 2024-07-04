@@ -1,0 +1,34 @@
+@import "../../Styles/vars";
+@import "../../Styles/template";
+.error {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .error__container {
+    width: 330px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 10px;
+    .error__title {
+      color: #1995F5;
+      font-family: $family;
+      font-size: 28px;
+      font-weight: $semibold;
+      line-height: 34px;
+      letter-spacing: 0%;
+      text-align: center;
+    }
+    .error__subtitle {
+      color: $slateGray;
+      font-family: $family;
+      font-size: 16px;
+      font-weight: $regular;
+      line-height: -1px;
+      letter-spacing: 0%;
+      text-align: center;
+    }
+  }
+}

@@ -2,34 +2,42 @@ import { useState, useEffect } from "react";
 import { getAuth, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { getUserData } from "../../Services/services";
+import Loading from "../../Components/Loading/Loading";
 import defaultPic from "../../assets/defaultProfilePic.svg";
 import heart from "../../assets/heart.svg";
 import briefcase from "../../assets/briefcase.svg";
 import customerService from "../../assets/customerService.svg";
 import signOutSvg from "../../assets/signOut.svg";
 import backbtn from "../../assets/backbtn.svg";
-import { RiSettings3Line } from "react-icons/ri";import "./Profile.scss";
+import { RiSettings3Line } from "react-icons/ri";
+import "./Profile.scss";
 export default function Profile() {
-  const [user, setUser] = useState('');
-  console.log(user);
+  const [user, setUser] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
   const auth = getAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
     async function getData() {
       try {
-        const Duser = auth.currentUser;
-        console.log(Duser);
-        if (Duser) {
-          const data = await getUserData(Duser.uid);
+        const user = auth.currentUser;
+        if (user) {
+          const data = await getUserData(user.uid);
           setUser(data);
         }
       } catch (error) {
-        console.log(error);
+        setError(error);
+      } finally {
+        setLoading(false);
       }
     }
     getData();
   }, [auth]);
+
+  if(!user) return <Loading/>
+  if(error) return navigate("*")
+
   return (
     <div className="account">
       <button
@@ -60,7 +68,7 @@ export default function Profile() {
             <span>Customer service</span>
           </div>
           <div className="account__nav-item">
-            <RiSettings3Line color="#1995F5"/>
+            <RiSettings3Line color="#1995F5" />
             <span>Settings</span>
           </div>
           <div
