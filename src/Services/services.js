@@ -8,10 +8,10 @@ export function useAddData() {
   const queryClient = useQueryClient();
   return useMutation(
     async (newData) => {
-      const ref = db.ref("users").push();
-      const userKey = ref.key;
+      const { id } = newData;
+      const ref = db.ref(`users/${id}`);
       await ref.set(newData);
-      return userKey;
+      return id;
     },
     {
       onSuccess: (userKey) => {
@@ -34,8 +34,8 @@ export function useEditData() {
     }
   );
 }
-export async function getAllUsersData() {
-  const snapshot = await db.ref("users").once("value");
+export async function getUserData(uid) {
+  const snapshot = await db.ref(`users/${uid}`).once("value");
   return snapshot.val();
 }
 export async function checkEmailExists(email) {

@@ -1,9 +1,10 @@
 import { useState, useRef, useEffect } from "react";
 import { getAuth, updateProfile } from "firebase/auth";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { register, emailValidation } from "../../Common/auth";
 import { useAddData, checkEmailExists } from "../../Services/services";
+import { setUser } from "../../Services/slices/user";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 import backbtn from "../../assets/backbtn.svg";
 import success from "../../assets/success.svg";
@@ -101,7 +102,7 @@ export default function Register() {
       setPassword("");
       return;
     }
-    register(auth, email, password, name, database, dispatch);
+    register(auth, email, password, name, database);
     setError(false);
     setName("");
     setEmail("");
@@ -111,15 +112,10 @@ export default function Register() {
   }
 
   function database(user) {
-    const object = {
-      email: email,
-      name: name,
-      id: user.uid,
-    };
+    const object = { email: email, name: name, id: user.uid };
+    dispatch(setUser({ email: email, name: name, id: user.uid }));
     addDataMutation.mutateAsync(object).then((databaseResponse) => {
-      updateProfile(user, {
-        displayName: databaseResponse,
-      });
+      updateProfile(user, { displayName: databaseResponse });
     });
   }
 

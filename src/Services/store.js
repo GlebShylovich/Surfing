@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { setupListeners } from "@reduxjs/toolkit/query/react";
-import user from './slices/user';
+import userSlice from './slices/user';
 
 export const store = configureStore({
     reducer: {
-        user: user,
+        user: userSlice,
     },
 })
 

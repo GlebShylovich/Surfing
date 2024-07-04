@@ -1,37 +1,57 @@
 @import "./vars";
 
-@mixin primaryBtn($bg: #1995F5, $border: 1px solid $bg, $color: #FFFFFF, $hoverBg: $mediumBlue, $hoverBorder: 1px solid $mediumBlue) {
-    font-family: $family;
-    width: 100%;
-    background: $bg;
-    border: $border;
-    border-radius: 15px;
-    padding: 20px 0;
-    color: $color;
-    font-weight: $bold;
-    font-size: 16px;
-    transition: 0.3s ease;
-    outline: none;
+@mixin primaryBtn(
+  $bg: #1995f5,
+  $border: 1px solid $bg,
+  $color: #ffffff,
+  $hoverBg: $mediumBlue,
+  $hoverBorder: 1px solid $mediumBlue
+) {
+  font-family: $family;
+  width: 100%;
+  background: $bg;
+  border: $border;
+  border-radius: 15px;
+  padding: 20px 0;
+  color: $color;
+  font-weight: $bold;
+  font-size: 16px;
+  transition: 0.3s ease;
+  outline: none;
 
-    &:hover {
-        background: $hoverBg;
-        border: $hoverBorder;
-    }
+  &:hover {
+    background: $hoverBg;
+    border: $hoverBorder;
+  }
 }
 
 @mixin input($border: 2px solid $lightGray) {
-    width: 100%;
-    font-family: $family;
-    height: 58px;
-    border: $border;
-    border-radius: 10px;
-    background: $lightGray;
-    color: $slateGray;
-    padding-left: 20px;
-    font-size: 16px;
-    font-weight: $regular;
-    line-height: -1px;
-    letter-spacing: 0%;
-    text-align: left;
-    outline: none;
+  width: 100%;
+  font-family: $family;
+  height: 58px;
+  border: $border;
+  border-radius: 10px;
+  background: $lightGray;
+  color: $slateGray;
+  padding-left: 20px;
+  font-size: 16px;
+  font-weight: $regular;
+  line-height: -1px;
+  letter-spacing: 0%;
+  text-align: left;
+  outline: none;
+}
+@mixin backBtn() {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background: transparent;
+  outline: none;
+  top: 25px;
+  left: 25px;
+  cursor: pointer;
 }
