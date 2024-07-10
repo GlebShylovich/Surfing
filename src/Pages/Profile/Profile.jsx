@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { getAuth, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { getUserData } from "../../Services/services";
+import { ref, getDownloadURL } from "firebase/storage";
+import { storage } from "../../main";
 import Loading from "../../Components/Loading/Loading";
 import defaultPic from "../../assets/defaultProfilePic.svg";
 import heart from "../../assets/heart.svg";
@@ -15,6 +17,7 @@ export default function Profile() {
   const [user, setUser] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [avatar, setAvatar] = useState(defaultPic);
   const auth = getAuth();
   const navigate = useNavigate();
 
@@ -25,6 +28,13 @@ export default function Profile() {
         if (user) {
           const data = await getUserData(user.uid);
           setUser(data);
+          const storageRef = ref(storage, `avatars/${user.uid}`);
+          try {
+            const url = await getDownloadURL(storageRef);
+            setAvatar(url);
+          } catch (error) {
+            setAvatar(defaultPic);
+          }
         }
       } catch (error) {
         setError(error);
@@ -35,8 +45,7 @@ export default function Profile() {
     getData();
   }, [auth]);
 
-  if(!user) return <Loading/>
-  if(error) return navigate("*")
+  if (!user) return <Loading />;
 
   return (
     <div className="account">
@@ -50,7 +59,7 @@ export default function Profile() {
       </button>
       <div className="account__container">
         <div className="account__pic">
-          <img src={defaultPic} alt="account pic" />
+          <img src={avatar} alt="account pic" />
         </div>
         <h1 className="account__title">Hello, {user.name}</h1>
         <span className="account__email">{user.email}</span>
@@ -67,7 +76,12 @@ export default function Profile() {
             <img src={customerService} alt="customerService" />
             <span>Customer service</span>
           </div>
-          <div className="account__nav-item">
+          <div
+            onClick={() => {
+              navigate("/settings");
+            }}
+            className="account__nav-item"
+          >
             <RiSettings3Line color="#1995F5" />
             <span>Settings</span>
           </div>

@@ -1,0 +1,39 @@
+@import "../../Styles/vars";
+@import "../../Styles/template";
+
+.accountDelete {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 310px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  background: white;
+  &__title {
+    color: $black;
+    font-family: $family;
+    font-size: 28px;
+    font-weight: $semibold;
+    line-height: 34px;
+    letter-spacing: 0%;
+    text-align: center;
+    margin-bottom: 6px;
+  }
+  &__subtitle {
+    color: $slateGray;
+    font-family: $family;
+    font-size: 16px;
+    font-weight: $regular;
+    line-height: -1px;
+    letter-spacing: 0%;
+    text-align: center;
+  }
+  & button{
+    margin-top: 20px;
+    @include primaryBtn($lightRed);
+  }
+}

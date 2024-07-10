@@ -6,10 +6,12 @@ import appConfig from "../config.js";
 import { BrowserRouter } from "react-router-dom";
 import { store } from "./Services/store.js";
 import { Provider } from "react-redux";
+import { getStorage } from "firebase/storage";
 import "./Styles/index.scss";
 import { QueryClient, QueryClientProvider } from "react-query";
 
-initializeApp(appConfig);
+const app = initializeApp(appConfig);
+const storage = getStorage(app);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -22,3 +24,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     </QueryClientProvider>
   </React.StrictMode>
 );
+
+export { storage };

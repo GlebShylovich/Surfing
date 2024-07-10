@@ -10,6 +10,7 @@ export default function App() {
         <Route path='/registration' element={<pagesObject.Register/>}/>
         <Route path='/login' element={<pagesObject.Login/>}/>
         <Route path='/profile' element={<pagesObject.Profile/>}/>
+        <Route path='/settings' element={<pagesObject.Settings/>}/>
         <Route path='*' element={<pagesObject.Error/>}/>
       </Routes>
     </>

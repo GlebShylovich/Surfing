@@ -24,8 +24,8 @@ export function useAddData() {
 export function useEditData() {
   const queryClient = useQueryClient();
   return useMutation(
-    async ({ id, field, updateData }) => {
-      await db.ref(`users/${id}/${field}`).set(updateData);
+    async ({ id, field, data }) => {
+      await db.ref(`users/${id}/${field}`).set(data);
     },
     {
       onSuccess: () => {
@@ -34,6 +34,7 @@ export function useEditData() {
     }
   );
 }
+
 export async function getUserData(uid) {
   const snapshot = await db.ref(`users/${uid}`).once("value");
   return snapshot.val();
@@ -45,4 +46,18 @@ export async function checkEmailExists(email) {
     .equalTo(email)
     .once("value");
   return snapshot.exists();
+}
+
+export function useDeleteUser() {
+  const queryClient = useQueryClient();
+  return useMutation(
+    async (uid) => {
+      await db.ref(`users/${uid}`).remove();
+    },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries("users");
+      },
+    }
+  );
 }

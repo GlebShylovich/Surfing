@@ -1,0 +1,93 @@
+@import "../../Styles/vars";
+@import "../../Styles/template";
+.settings {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .backBtn {
+    @include backBtn;
+  }
+  .settings__container {
+    margin-top: 25px;
+    width: 330px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .settings__title {
+      color: $black;
+      font-family: $family;
+      font-size: 20px;
+      font-weight: $semibold;
+      line-height: 25px;
+      letter-spacing: 0%;
+      text-align: center;
+    }
+    .settings__pic {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      row-gap: 10px;
+      & img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+      }
+      .settings__picInput {
+        display: none;
+      }
+      .settings__picLabel,
+      .settings__picButton {
+        color: $slateGray;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: -1px;
+        letter-spacing: 0%;
+        text-align: left;
+        margin-bottom: 8px;
+        cursor: pointer;
+        border: none;
+        background: none;
+      }
+    }
+    .settings__profileEdit {
+      margin: 20px 0;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      width: 100%;
+      row-gap: 10px;
+      .settings__usernameBox,
+      .settings__emailBox {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        & label {
+          color: $slateGray;
+          font-size: 14px;
+          font-weight: 700;
+          line-height: -1px;
+          letter-spacing: 0%;
+          text-align: left;
+          margin-bottom: 8px;
+        }
+        & input {
+          @include input;
+        }
+        .settings__usernameBox-inputBox {
+          width: 100%;
+          position: relative;
+          & svg {
+            height: 18px;
+            position: absolute;
+            right: 18px;
+            top: 20px;
+            z-index: 1;
+          }
+        }
+      }
+    }
+  }
+}
