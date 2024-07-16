@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { getAuth, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { getUserData } from "../../Services/services";
 import { ref, getDownloadURL } from "firebase/storage";
+import { useSelector } from "react-redux";
 import { storage } from "../../main";
 import Loading from "../../Components/Loading/Loading";
 import defaultPic from "../../assets/defaultProfilePic.svg";
@@ -14,7 +14,7 @@ import backbtn from "../../assets/backbtn.svg";
 import { RiSettings3Line } from "react-icons/ri";
 import "./Profile.scss";
 export default function Profile() {
-  const [user, setUser] = useState("");
+  const user = useSelector((state) => state.user);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [avatar, setAvatar] = useState(defaultPic);
@@ -22,28 +22,21 @@ export default function Profile() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    async function getData() {
+    async function fetchUserData() {
       try {
-        const user = auth.currentUser;
         if (user) {
-          const data = await getUserData(user.uid);
-          setUser(data);
-          const storageRef = ref(storage, `avatars/${user.uid}`);
-          try {
-            const url = await getDownloadURL(storageRef);
-            setAvatar(url);
-          } catch (error) {
-            setAvatar(defaultPic);
-          }
+          const storageRef = ref(storage, `avatars/${user.id}`);
+          const url = await getDownloadURL(storageRef);
+          setAvatar(url);
         }
       } catch (error) {
-        setError(error);
+        setError(true);
       } finally {
         setLoading(false);
       }
     }
-    getData();
-  }, [auth]);
+    fetchUserData();
+  }, [user]);
 
   if (!user) return <Loading />;
 
@@ -51,7 +44,7 @@ export default function Profile() {
     <div className="account">
       <button
         onClick={() => {
-          navigate(-1);
+          navigate("/");
         }}
         className="backBtn"
       >

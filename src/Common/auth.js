@@ -29,3 +29,24 @@ export function register(auth, email, password, name, database, dispatch) {
 export function emailValidation(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
+
+export function passwordValidation(
+  password,
+  setPasswordLetters,
+  setPasswordLength,
+  setPasswordAlphabet
+) {
+  if (password.length < 8) {
+    setPasswordLength(false);
+    return false;
+  }
+  if (!(/\d/.test(password) && /[a-zA-Z]/.test(password))) {
+    setPasswordAlphabet(false);
+    return false;
+  }
+  if (!/^[a-zA-Z0-9]*$/.test(password)) {
+    setPasswordLetters(false);
+    return false;
+  }
+  return true;
+}

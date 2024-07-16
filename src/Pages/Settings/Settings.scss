@@ -60,7 +60,11 @@
       width: 100%;
       row-gap: 10px;
       .settings__usernameBox,
-      .settings__emailBox {
+      .settings__emailBox,
+      .settings__emailConfirmationBox,
+      .settings__passwordBox,
+      .settings__newPasswordBox,
+      .settings__newPasswordRepeatBox {
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -76,16 +80,35 @@
         & input {
           @include input;
         }
-        .settings__usernameBox-inputBox {
-          width: 100%;
-          position: relative;
-          & svg {
-            height: 18px;
-            position: absolute;
-            right: 18px;
-            top: 20px;
-            z-index: 1;
-          }
+        .settings__emailConfirmationBox-label,
+        .settings__newPasswordBox-label,
+        .settings__newPasswordRepeatBox-label{
+          color: $skyBlue;
+        }
+        .settings__emailConfirmationBox-input,
+        .settings__newPasswordBox-input,
+        .settings__newPasswordRepeatBox-input{
+          @include input(2px solid $skyBlue);
+        }
+        .settings__emailBox-label--error,
+        .settings__usernameBox-label--error,
+        .settings__passwordBox-label--error,
+        .settings__newPasswordBox-label--error,
+        .settings__newPasswordRepeatBox-label--error {
+          color: $lightRed;
+          font-size: 14px;
+          font-weight: 700;
+          line-height: -1px;
+          letter-spacing: 0%;
+          text-align: left;
+          margin-bottom: 8px;
+        }
+        .settings__emailBox-input--error,
+        .settings__usernameBox-input--error,
+        .settings__passwordBox-input--error,
+        .settings__newPasswordBox-input--error,
+        .settings__newPasswordRepeatBox-input--error {
+          @include input(2px solid $lightRed);
         }
       }
     }

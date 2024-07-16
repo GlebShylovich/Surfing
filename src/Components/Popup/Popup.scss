@@ -1,0 +1,21 @@
+@import "../../Styles/vars";
+.popup{
+    position: absolute;
+    display: block;
+    background-color: #1995f5;
+    animation: moveDown 3s;
+    z-index: 10;
+    top: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+}
+@keyframes moveDown {
+    0%{
+        transform: translateY(-150%);
+    }
+    100%{
+        transform: translateY(0%);
+        display: none;
+    }
+}
