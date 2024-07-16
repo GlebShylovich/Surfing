@@ -43,6 +43,7 @@ export default function Settings() {
   const [invalidPassword, setInvalidPassword] = useState(false);
   const [isValidEmail, setIsValidEmail] = useState(true);
   const [isPasswordsMatch, setIsPasswordMatch] = useState(true);
+  const [isPasswordInputFocused, setIsPasswordInputFocused] = useState(false);
   //Доп. блоки
   const [showEmailConfirmation, setShowEmailConfirmation] = useState(false);
   const [showPasswordConfirmation, setShowPasswordConfirmation] =
@@ -213,6 +214,11 @@ export default function Settings() {
     }
   }
 
+  const closePopup = () => {
+    setUpdateStatus(false);
+    setIsSuccess(null);
+  };
+
   if (loading) return <Loading />;
 
   return (
@@ -326,9 +332,10 @@ export default function Settings() {
                     : "settings__passwordBox-label"
                 }
               >
-                {invalidPassword ? "Invalid password" : "Your password"}
+                {invalidPassword ? "Invalid password" : isPasswordInputFocused ? "Enter your current password" : "Your password"}
               </label>
               <input
+              onFocus={()=>{setIsPasswordInputFocused(true)}}
                 className={
                   invalidPassword
                     ? "settings__passwordBox-input--error"
@@ -359,10 +366,10 @@ export default function Settings() {
                   {!passwordLength
                     ? "At least 8 characters"
                     : !passwordAlphabet
-                    ? "Latin alphabet only"
-                    : !passwordLetters
-                    ? "Letters & numbers"
-                    : "Enter the new password"}
+                      ? "Latin alphabet only"
+                      : !passwordLetters
+                        ? "Letters & numbers"
+                        : "Enter the new password"}
                 </label>
                 <input
                   className={
@@ -409,7 +416,7 @@ export default function Settings() {
           )}
         </div>
       </div>
-      {updateStatus && <Popup value={isSuccess} />}
+      {updateStatus && <Popup value={isSuccess} onClose={closePopup} />}
     </div>
   );
 }

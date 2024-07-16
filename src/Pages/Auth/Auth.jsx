@@ -1,14 +1,21 @@
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Animation from "../../Components/Animation/Animation.jsx";
 import logo from "../../img/logo.png";
 import "./Auth.scss";
 
 export default function Auth() {
+  const [isShown, setIsShown] = useState(true);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsShown(false);
+    }, 5000);
+  }, []);
   return (
     <>
-      <Animation />
-      <div className="auth">
+      {isShown ? <Animation /> : <div className="auth">
         <div className="auth__branding">
           <img src={logo} alt="logo" className="auth__logo" />
           <span className="auth__name">sufrvoyage</span>
@@ -62,7 +69,7 @@ export default function Auth() {
             privacy policy
           </a>
         </p>
-      </div>
+      </div>}
     </>
   );
 }
