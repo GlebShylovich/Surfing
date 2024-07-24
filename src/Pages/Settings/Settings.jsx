@@ -44,10 +44,12 @@ export default function Settings() {
   const [isValidEmail, setIsValidEmail] = useState(true);
   const [isPasswordsMatch, setIsPasswordMatch] = useState(true);
   const [isPasswordInputFocused, setIsPasswordInputFocused] = useState(false);
+  const [isFileChosen, setIsFileChosen] = useState(false);
   //Доп. блоки
   const [showEmailConfirmation, setShowEmailConfirmation] = useState(false);
   const [showPasswordConfirmation, setShowPasswordConfirmation] =
     useState(false);
+  const [saveBtn, setSaveBtn] = useState(false);
   //Ошибки
   const [updateStatus, setUpdateStatus] = useState(false);
   const [isSuccess, setIsSuccess] = useState(null);
@@ -87,6 +89,7 @@ export default function Settings() {
         setUpdateStatus,
         setIsSuccess
       );
+      setSaveBtn(false);
     } else {
       setUsernameLength(false);
     }
@@ -124,6 +127,7 @@ export default function Settings() {
           setShowEmailConfirmation(false);
           setCurrentPassword("");
           setEmail("");
+          setSaveBtn(false);
         })
         .catch((error) => {
           console.error(error);
@@ -171,6 +175,7 @@ export default function Settings() {
           setPassword("");
           setUpdateStatus(true);
           setIsSuccess(1);
+          setSaveBtn(false);
         })
         .catch((error) => {
           setUpdateStatus(true);
@@ -198,6 +203,7 @@ export default function Settings() {
 
   function handleFile(e) {
     setFile(e.target.files[0]);
+    setIsFileChosen(true);
   }
 
   async function uploadFile() {
@@ -219,6 +225,25 @@ export default function Settings() {
     setIsSuccess(null);
   };
 
+  useEffect(() => {
+    if (username !== "" || currentPassword !== "" || newPasswordRepeat !== "") {
+      setSaveBtn(true);
+    } else {
+      setSaveBtn(false);
+    }
+  }, [username, currentPassword, newPasswordRepeat]);
+
+  function saveChanges(e) {
+    e.preventDefault();
+    if (username) {
+      handleUpdateUsername(e);
+    } else if (currentPassword) {
+      handleEmailConfirmation(e);
+    } else if (newPasswordRepeat) {
+      handlePasswordConfirmation(e);
+    }
+  }
+
   if (loading) return <Loading />;
 
   return (
@@ -229,7 +254,7 @@ export default function Settings() {
       <div className="settings__container">
         <div className="settings__title">Settings</div>
         <div className="settings__pic">
-          <img src={avatar} alt="User Avatar" />
+          <img src={isFileChosen ? defaultPic : avatar} alt="User Avatar" />
           <input
             onChange={handleFile}
             type="file"
@@ -252,7 +277,7 @@ export default function Settings() {
         </div>
         <div className="settings__profileEdit">
           <form
-            onSubmit={handleUpdateUsername}
+            onSubmit={saveChanges}
             className="settings__usernameBox"
           >
             <label
@@ -307,9 +332,11 @@ export default function Settings() {
           {showEmailConfirmation && (
             <form
               className="settings__emailConfirmationBox"
-              onSubmit={handleEmailConfirmation}
+              onSubmit={saveChanges}
             >
-              <label className="settings__emailConfirmationBox-label">Confirm password to change email</label>
+              <label className="settings__emailConfirmationBox-label">
+                Confirm password to change email
+              </label>
               <input
                 type="password"
                 value={currentPassword}
@@ -332,10 +359,16 @@ export default function Settings() {
                     : "settings__passwordBox-label"
                 }
               >
-                {invalidPassword ? "Invalid password" : isPasswordInputFocused ? "Enter your current password" : "Your password"}
+                {invalidPassword
+                  ? "Invalid password"
+                  : isPasswordInputFocused
+                  ? "Enter your current password"
+                  : "Your password"}
               </label>
               <input
-              onFocus={()=>{setIsPasswordInputFocused(true)}}
+                onFocus={() => {
+                  setIsPasswordInputFocused(true);
+                }}
                 className={
                   invalidPassword
                     ? "settings__passwordBox-input--error"
@@ -366,10 +399,10 @@ export default function Settings() {
                   {!passwordLength
                     ? "At least 8 characters"
                     : !passwordAlphabet
-                      ? "Latin alphabet only"
-                      : !passwordLetters
-                        ? "Letters & numbers"
-                        : "Enter the new password"}
+                    ? "Latin alphabet only"
+                    : !passwordLetters
+                    ? "Letters & numbers"
+                    : "Enter the new password"}
                 </label>
                 <input
                   className={
@@ -385,7 +418,7 @@ export default function Settings() {
                 />
               </form>
               <form
-                onSubmit={handlePasswordConfirmation}
+                onSubmit={saveChanges}
                 className="settings__newPasswordRepeatBox"
               >
                 <label
@@ -414,6 +447,7 @@ export default function Settings() {
               </form>
             </>
           )}
+          {saveBtn && <button className="settings__saveBtn" onClick={saveChanges}>Save</button>}
         </div>
       </div>
       {updateStatus && <Popup value={isSuccess} onClose={closePopup} />}

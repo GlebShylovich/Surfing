@@ -59,6 +59,11 @@
       flex-direction: column;
       width: 100%;
       row-gap: 10px;
+      .settings__saveBtn{
+        margin-top: 20px;
+        animation: fadeIn 3s;
+        @include primaryBtn
+      }
       .settings__usernameBox,
       .settings__emailBox,
       .settings__emailConfirmationBox,
@@ -112,5 +117,13 @@
         }
       }
     }
+  }
+}
+@keyframes fadeIn {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
   }
 }

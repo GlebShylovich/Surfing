@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { getAuth } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getUserData } from "../../Services/services";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../Services/slices/user";
+import filterIcon from "../../assets/miniFilterIcon.svg";
+import profileIcon from "../../assets/miniProfilePic.svg";
 import "./Home.scss";
 
 export default function Home() {
@@ -11,11 +13,13 @@ export default function Home() {
   const dispatch = useDispatch();
   const auth = getAuth();
   useEffect(() => {
-    async function fetchUserData() {
-      const user = auth.currentUser;
-      try {
-        if (user) {
-          const userDatabase = await getUserData(user.uid);
+    fetchUserData();
+  }, []);
+
+  async function fetchUserData() {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        getUserData(user.uid).then((userDatabase) => {
           dispatch(
             setUser({
               email: userDatabase.email,
@@ -23,19 +27,37 @@ export default function Home() {
               id: userDatabase.id,
             })
           );
-        } else {
-          navigate('/auth')
-        }
-      } catch (error) {
-        console.log(error);
+          navigate("/");
+        });
+        return;
       }
-    }
-    fetchUserData();
-  }, []);
+      navigate("/auth");
+    });
+  }
 
   return (
     <div className="home">
-      <Link to="/profile">Account</Link>
+      <div className="home__container">
+        <header className="home__header">
+          <h1 className="home__logo">surfvoyage</h1>
+          <nav className="home__navigation">
+            <li className="home__navigation-item">
+              <a href="/">
+                <img src={filterIcon} alt="filter" />
+              </a>
+            </li>
+            <li className="home__navigation-item">
+              <Link to="/profile">
+                <img src={profileIcon} alt="filter" />
+              </Link>
+            </li>
+          </nav>
+        </header>
+        <div className="home__search">
+          <input className="home__searchInput" type="text" placeholder="Search"/>
+        </div>
+        <div className="home__catalog"></div>
+      </div>
     </div>
   );
 }

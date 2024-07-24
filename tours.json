@@ -1,0 +1,429 @@
+[
+    {
+      "tourName": "Tropical Surf Adventure",
+      "destination": "Bali, Indonesia",
+      "mapLocation": "https://example.com/maplink1",
+      "pricePerNight": {
+        "currency": "IDR",
+        "amount": 1200
+      },
+      "description": "Experience the thrill of surfing on the beautiful island of Bali. Known for its stunning beaches and consistent waves, Bali offers an ideal setting for surfers of all levels. This tour includes personalized surf lessons, comfortable accommodations, and a variety of exciting activities. Enjoy the vibrant culture and breathtaking landscapes of Bali while catching some of the best waves in the world.",
+      "included": [
+        "Personal surf lessons",
+        "Free Wi-Fi",
+        "Excursions",
+        "Three meals per day",
+        "Equipment rental"
+      ],
+      "activities": [
+        {
+          "name": "Beach Surf Sessions",
+          "description": "Daily surf sessions at the most popular beaches in Bali, with personalized instruction to improve your skills."
+        },
+        {
+          "name": "Cultural Exploration",
+          "description": "Visit traditional Balinese temples, markets, and local villages to experience the rich culture of Bali."
+        },
+        {
+          "name": "Sunset Dinner Cruise",
+          "description": "Enjoy a relaxing sunset cruise along Bali's coastline, with stunning views of the ocean and a delicious dinner."
+        }
+      ],
+      "instructors": [
+        {
+          "name": "Chris Evans",
+          "age": 35,
+          "background": "Chris Evans has been surfing since the age of 10 on the California coast. He has won several major competitions and is known for his aggressive riding style. After retiring from professional surfing, Chris transitioned into coaching. He is renowned for his innovative teaching methods and his ability to adapt to each student’s individual needs."
+        },
+        {
+          "name": "Michael Wilson",
+          "age": 40,
+          "background": "Michael Wilson began surfing at 14 on the Australian coast and quickly made a name for himself as a professional surfer by 18. Known for his dynamic teaching style, Michael focuses on helping students develop their techniques and confidence. He founded his own surf school and has trained hundreds of students, many of whom have become successful professional surfers."
+        }
+      ]
+    },
+    {
+      "tourName": "Hawaiian Surf Odyssey",
+      "destination": "Oahu, Hawaii",
+      "mapLocation": "https://example.com/maplink2",
+      "pricePerNight": {
+        "currency": "USD",
+        "amount": 250
+      },
+      "description": "Discover the legendary surf of Hawaii with the Hawaiian Surf Odyssey. This tour features some of the most iconic surf spots in Oahu, combined with personalized coaching and a range of cultural experiences. Explore the rich heritage of Hawaii, from traditional sites to local markets, and enjoy thrilling surf sessions in paradise.",
+      "included": [
+        "Personal surf lessons",
+        "Free Wi-Fi",
+        "Excursions",
+        "Three meals per day",
+        "Equipment rental"
+      ],
+      "activities": [
+        {
+          "name": "Waikiki Beach Surfing",
+          "description": "Surf at the world-famous Waikiki Beach, known for its perfect waves and iconic views. Lessons are tailored to all skill levels."
+        },
+        {
+          "name": "Cultural Immersion Tour",
+          "description": "Explore the rich cultural heritage of Hawaii with visits to traditional Hawaiian sites, historical landmarks, and local markets. Learn about Hawaiian traditions and enjoy a taste of local cuisine."
+        }
+      ],
+      "instructors": [
+        {
+          "name": "Aloha Kealoha",
+          "age": 38,
+          "background": "Aloha Kealoha has been surfing in Hawaii since childhood and is a well-respected figure in the local surf community. Known for his smooth style and deep connection to Hawaiian surf culture, Aloha provides expert instruction with a focus on traditional techniques and respect for the ocean. His teaching is both insightful and inspiring, making him a favorite among surfers of all levels."
+        },
+        {
+          "name": "Lani Pua",
+          "age": 34,
+          "background": "Lani Pua's surfing career has taken her to some of the world's most beautiful surf destinations. Her teaching style is patient and encouraging, focusing on technique and confidence. Lani's passion for surfing and her ability to create a supportive learning environment make her an excellent choice for this tour."
+        }
+      ]
+    },
+    {
+      "tourName": "Australian Surf Expedition",
+      "destination": "Gold Coast, Australia",
+      "mapLocation": "https://example.com/maplink4",
+      "pricePerNight": {
+        "currency": "AUD",
+        "amount": 180
+      },
+      "description": "Explore the vibrant surf scene of Australia's Gold Coast with this Surf Expedition. The tour features some of the best surf spots along the coast, with opportunities to ride both powerful waves and mellow swells. Enjoy personalized coaching, comfortable accommodations, and a variety of activities designed to showcase the natural beauty and unique culture of the Gold Coast. Whether you're a seasoned pro or a beginner, this tour provides an unforgettable surfing experience in one of Australia's premier surf destinations.",
+      "included": [
+        "Personal surf lessons",
+        "Free Wi-Fi",
+        "Excursions",
+        "Three meals per day",
+        "Equipment rental"
+      ],
+      "activities": [
+        {
+          "name": "Surfers Paradise Beach Day",
+          "description": "Spend a day at Surfers Paradise Beach, known for its golden sands and excellent surf conditions. Enjoy a mix of relaxation and surfing at one of Australia's most famous beaches."
+        },
+        {
+          "name": "Currumbin Wildlife Sanctuary Visit",
+          "description": "Explore the Currumbin Wildlife Sanctuary and get up close with Australian wildlife. This excursion offers a unique chance to see koalas, kangaroos, and other native animals in a beautiful setting."
+        },
+        {
+          "name": "Gold Coast Hinterland Tour",
+          "description": "Discover the lush hinterlands of the Gold Coast with a guided tour through rainforests and scenic landscapes. Enjoy hiking trails, stunning views, and a relaxing break from the beach."
+        }
+      ],
+      "instructors": [
+        {
+          "name": "Tom Harris",
+          "age": 37,
+          "background": "Tom Harris has been surfing the Gold Coast since his teenage years and has established himself as a leading instructor in the region. Known for his extensive knowledge of local surf conditions and his friendly, approachable teaching style, Tom provides expert guidance to surfers of all levels. His passion for surfing and commitment to helping students improve make him a standout instructor."
+        },
+        {
+          "name": "Jasmine Lee",
+          "age": 31,
+          "background": "Jasmine Lee's surfing career began on the East Coast of Australia, where she quickly gained recognition for her impressive skills and competitive success. Her teaching style is energetic and supportive, focusing on building confidence and improving technique. Jasmine's enthusiasm for surfing and dedication to her students make her an excellent coach."
+        }
+      ]
+    },
+    {
+      "tourName": "Surf and Sip Retreat",
+      "destination": "Tuscany, Italy",
+      "mapLocation": "https://example.com/maplink5",
+      "pricePerNight": {
+        "currency": "EUR",
+        "amount": 160
+      },
+      "description": "Combine your love for surfing with a taste of Tuscany in this unique Surf and Sip Retreat. Set against the backdrop of picturesque Italian landscapes, this tour offers a blend of thrilling surf sessions and relaxing vineyard visits. Enjoy personalized surf lessons, explore beautiful surf spots, and indulge in wine tastings and local cuisine. This retreat is perfect for those looking to balance their surfing passion with a culinary and cultural experience in one of Italy's most charming regions.",
+      "included": [
+        "Personal surf lessons",
+        "Free Wi-Fi",
+        "Excursions",
+        "Three meals per day",
+        "Equipment rental"
+      ],
+      "activities": [
+        {
+          "name": "Vineyard Tour and Wine Tasting",
+          "description": "Experience the beauty of Tuscany with a guided tour of local vineyards. Enjoy wine tastings and learn about the winemaking process while taking in the stunning countryside views."
+        },
+        {
+          "name": "Beach Day in Forte dei Marmi",
+          "description": "Relax and surf at the popular beach town of Forte dei Marmi. Known for its beautiful sandy beaches and clear waters, it's a perfect spot for a day of sun and surf."
+        },
+        {
+          "name": "Tuscan Cooking Class",
+          "description": "Join a cooking class to learn how to prepare traditional Tuscan dishes. Enjoy a hands-on experience and savor the flavors of local cuisine."
+        }
+      ],
+      "instructors": [
+        {
+          "name": "Marco Rossi",
+          "age": 36,
+          "background": "Marco Rossi is a seasoned surfer and instructor who has been teaching in Italy for over a decade. Known for his patient and thorough approach, Marco excels in helping surfers of all levels improve their skills. His deep knowledge of local surf conditions and his ability to create a supportive learning environment make him a top choice for surf instruction in Tuscany."
+        },
+        {
+          "name": "Giulia Bianchi",
+          "age": 33,
+          "background": "Giulia Bianchi's surfing career began on the Mediterranean coast, where she developed a reputation for her skillful and dynamic surfing. Her teaching style focuses on technique and confidence, and she is known for her friendly and encouraging demeanor. Giulia's passion for surfing and her ability to connect with her students make her an excellent instructor."
+        }
+      ]
+    },
+    {
+      "tourName": "Caribbean Surf and Relaxation",
+      "destination": "Jamaica",
+      "mapLocation": "https://example.com/maplink6",
+      "pricePerNight": {
+        "currency": "USD",
+        "amount": 200
+      },
+      "description": "Immerse yourself in the laid-back vibes of Jamaica with this Caribbean Surf and Relaxation tour. Enjoy surfing on some of the island’s best waves while experiencing the island's vibrant culture and natural beauty. This tour includes personalized surf coaching, comfortable accommodations, and opportunities to explore Jamaica's unique attractions. From surfing to relaxing on the beach, this tour offers the perfect blend of adventure and relaxation in a tropical paradise.",
+      "included": [
+        "Personal surf lessons",
+        "Free Wi-Fi",
+        "Excursions",
+        "Three meals per day",
+        "Equipment rental"
+      ],
+      "activities": [
+        {
+          "name": "Seven Mile Beach Day",
+          "description": "Spend a day at the stunning Seven Mile Beach, known for its white sands and crystal-clear waters. Enjoy surfing, swimming, and relaxation in this beautiful setting."
+        },
+        {
+          "name": "Dunn's River Falls Excursion",
+          "description": "Visit the famous Dunn's River Falls and climb the cascading waterfalls. This excursion offers a chance to experience one of Jamaica’s most iconic natural attractions."
+        },
+        {
+          "name": "Local Cuisine Tasting",
+          "description": "Savor the flavors of Jamaica with a tasting tour of local cuisine. Enjoy dishes such as jerk chicken, fresh seafood, and tropical fruits."
+        }
+      ],
+      "instructors": [
+        {
+          "name": "Tyler Johnson",
+          "age": 32,
+          "background": "Tyler Johnson has been surfing in Jamaica for several years and is well-known for his friendly and professional teaching style. His deep understanding of local surf conditions and his ability to connect with students of all levels make him a highly effective instructor. Tyler's passion for surfing and his dedication to helping students improve are evident in his approach to coaching."
+        },
+        {
+          "name": "Aisha Campbell",
+          "age": 29,
+          "background": "Aisha Campbell started surfing in the Caribbean and has built a reputation for her expert technique and engaging teaching style. Her focus is on helping students gain confidence and refine their skills while enjoying the surf experience. Aisha's enthusiasm and dedication make her an excellent choice for surf instruction in Jamaica."
+        }
+      ]
+    },
+    {
+      "tourName": "South African Surf Expedition",
+      "destination": "Cape Town, South Africa",
+      "mapLocation": "https://example.com/maplink7",
+      "pricePerNight": {
+        "currency": "ZAR",
+        "amount": 2200
+      },
+      "description": "Embark on an unforgettable surf adventure in Cape Town with this South African Surf Expedition. This tour features world-class surf spots, personalized lessons, and guided tours of the best surf locations. In addition to surfing, enjoy opportunities to explore Cape Town's vibrant culture, wildlife, and breathtaking landscapes. This tour is ideal for those seeking both adventure and relaxation in one of Africa's most iconic surf destinations.",
+      "included": [
+        "Personal surf lessons",
+        "Free Wi-Fi",
+        "Excursions",
+        "Three meals per day",
+        "Equipment rental"
+      ],
+      "activities": [
+        {
+          "name": "Cape Peninsula Tour",
+          "description": "Take a scenic drive around the Cape Peninsula, including visits to the Cape of Good Hope and Boulders Beach, where you can see penguins up close."
+        },
+        {
+          "name": "Table Mountain Hike",
+          "description": "Hike up Table Mountain for panoramic views of Cape Town and the surrounding coastline. This excursion offers a chance to experience one of South Africa's most famous landmarks."
+        },
+        {
+          "name": "Cultural and Food Tour",
+          "description": "Explore Cape Town's vibrant cultural scene with visits to local markets, historic sites, and a taste of traditional South African cuisine."
+        }
+      ],
+      "instructors": [
+        {
+          "name": "Nathan Edwards",
+          "age": 34,
+          "background": "Nathan Edwards has been surfing in South Africa for over 15 years and is known for his deep understanding of local surf conditions. His teaching approach combines technical skill with a relaxed, encouraging style. Nathan is dedicated to helping surfers of all levels achieve their goals and enjoy their time on the waves."
+        },
+        {
+          "name": "Sophie van der Merwe",
+          "age": 30,
+          "background": "Sophie van der Merwe started surfing in Cape Town and quickly gained recognition for her impressive skills and competitive success. Her teaching style is engaging and supportive, focusing on technique and confidence. Sophie’s enthusiasm for surfing and dedication to her students make her an excellent instructor."
+        }
+      ]
+    },
+    {
+      "tourName": "Japanese Surf Adventure",
+      "destination": "Okinawa, Japan",
+      "mapLocation": "https://example.com/maplink8",
+      "pricePerNight": {
+        "currency": "JPY",
+        "amount": 18000
+      },
+      "description": "Experience the unique surf culture of Okinawa with this Japanese Surf Adventure. Known for its clear waters and beautiful coral reefs, Okinawa offers a distinctive surfing experience. This tour includes personalized surf lessons, guided tours of the best surf spots, and opportunities to explore Okinawa's rich cultural heritage. Enjoy the blend of surfing with visits to local temples, traditional markets, and picturesque beaches.",
+      "included": [
+        "Personal surf lessons",
+        "Free Wi-Fi",
+        "Excursions",
+        "Three meals per day",
+        "Equipment rental"
+      ],
+      "activities": [
+        {
+          "name": "Coral Reef Exploration",
+          "description": "Explore the stunning coral reefs around Okinawa with guided snorkeling or diving trips. Discover the diverse marine life and vibrant underwater ecosystems."
+        },
+        {
+          "name": "Okinawan Culture Tour",
+          "description": "Experience the rich culture of Okinawa with visits to local temples, traditional markets, and cultural performances. Learn about Okinawan history and customs."
+        },
+        {
+          "name": "Beach Relaxation",
+          "description": "Spend a relaxing day at some of Okinawa's most beautiful beaches. Enjoy sunbathing, swimming, and surfing in a serene and picturesque setting."
+        }
+      ],
+      "instructors": [
+        {
+          "name": "Kenji Nakamura",
+          "age": 40,
+          "background": "Kenji Nakamura is a seasoned surfer with deep roots in Okinawa. His extensive knowledge of local surf conditions and his patient teaching style make him a highly effective instructor. Kenji's passion for surfing and his commitment to helping students improve make him an excellent choice for this tour."
+        },
+        {
+          "name": "Yuki Saito",
+          "age": 35,
+          "background": "Yuki Saito began surfing in Japan and has gained recognition for her skillful techniques and friendly demeanor. Her teaching style emphasizes technique and confidence, and she is known for her ability to motivate and support her students. Yuki's enthusiasm and expertise enhance the overall surf experience."
+        }
+      ]
+    },
+    {
+      "tourName": "Mexican Surf Escape",
+      "destination": "Sayulita, Mexico",
+      "mapLocation": "https://example.com/maplink9",
+      "pricePerNight": {
+        "currency": "MXN",
+        "amount": 3500
+      },
+      "description": "Escape to the laid-back surf town of Sayulita with this Mexican Surf Escape. Known for its welcoming surf community and beautiful beaches, Sayulita offers a perfect setting for a surfing getaway. The tour includes personalized surf lessons, comfortable accommodations, and a variety of activities to explore the town and its surroundings. Enjoy authentic Mexican cuisine, vibrant local markets, and the relaxed atmosphere of this charming coastal town.",
+      "included": [
+        "Personal surf lessons",
+        "Free Wi-Fi",
+        "Excursions",
+        "Three meals per day",
+        "Equipment rental"
+      ],
+      "activities": [
+        {
+          "name": "Sayulita Beach Day",
+          "description": "Relax and surf at the famous Sayulita Beach, known for its consistent waves and vibrant surf culture. Enjoy a day of sun, sand, and surfing in this beautiful setting."
+        },
+        {
+          "name": "Local Market Tour",
+          "description": "Explore Sayulita's bustling markets and experience local Mexican cuisine. Enjoy fresh produce, handmade crafts, and the lively atmosphere of the town."
+        },
+        {
+          "name": "Sunset Cruise",
+          "description": "Join a sunset cruise along the coast of Sayulita. Enjoy breathtaking views of the Pacific Ocean, and relax as the sun sets over the horizon."
+        }
+      ],
+      "instructors": [
+        {
+          "name": "Carlos Mendoza",
+          "age": 33,
+          "background": "Carlos Mendoza has been surfing in Mexico for over a decade and is well-known in the Sayulita surf community. His relaxed and friendly teaching style helps surfers of all levels improve their skills and enjoy their time on the waves. Carlos's local knowledge and passion for surfing make him an excellent instructor."
+        },
+        {
+          "name": "Sofia Hernandez",
+          "age": 29,
+          "background": "Sofia Hernandez started surfing on the Pacific coast of Mexico and has built a reputation for her skillful techniques and approachable demeanor. Her teaching style is supportive and encouraging, focusing on helping students develop their confidence and technique. Sofia's enthusiasm and expertise make her a great choice for this tour."
+        }
+      ]
+    },
+    {
+      "tourName": "Brazilian Surf Expedition",
+      "destination": "Florianópolis, Brazil",
+      "mapLocation": "https://example.com/maplink10",
+      "pricePerNight": {
+        "currency": "BRL",
+        "amount": 600
+      },
+      "description": "Explore the vibrant surf scene of Florianópolis with this Brazilian Surf Expedition. Known for its beautiful beaches and consistent waves, Florianópolis offers a dynamic surfing experience. This tour features personalized surf lessons, guided surf excursions, and opportunities to enjoy the local culture and cuisine. From surfing the waves to exploring the city, this tour provides an exciting and immersive experience in one of Brazil's top surf destinations.",
+      "included": [
+        "Personal surf lessons",
+        "Free Wi-Fi",
+        "Excursions",
+        "Three meals per day",
+        "Equipment rental"
+      ],
+      "activities": [
+        {
+          "name": "Praia Mole Surf Sessions",
+          "description": "Surf at Praia Mole, one of Florianópolis's most famous beaches. Enjoy consistent waves and expert instruction at this popular surf spot."
+        },
+        {
+          "name": "City and Culture Tour",
+          "description": "Explore the vibrant city of Florianópolis with visits to local landmarks, markets, and cultural sites. Discover the rich history and lively atmosphere of the city."
+        },
+        {
+          "name": "Lagoon Adventure",
+          "description": "Enjoy a guided tour of the Lagoa da Conceição, a beautiful lagoon offering opportunities for kayaking, paddleboarding, and relaxing by the water."
+        }
+      ],
+      "instructors": [
+        {
+          "name": "Pedro Silva",
+          "age": 30,
+          "background": "Pedro Silva is a native of Florianópolis with extensive experience in both surfing and instructing. Known for his friendly and effective teaching style, Pedro excels in helping surfers of all levels improve their skills. His deep knowledge of local surf spots and his passion for surfing make him a top instructor in the region."
+        },
+        {
+          "name": "Isabela Costa",
+          "age": 28,
+          "background": "Isabela Costa's surfing career has been marked by her impressive skills and engaging teaching style. She began surfing in Brazil and quickly became known for her supportive and motivational approach to coaching. Isabela's enthusiasm and expertise make her an excellent choice for surf instruction."
+        }
+      ]
+    },
+    {
+      "tourName": "Portuguese Surf Retreat",
+      "destination": "Lisbon, Portugal",
+      "mapLocation": "https://example.com/maplink11",
+      "pricePerNight": {
+        "currency": "EUR",
+        "amount": 140
+      },
+      "description": "Discover the captivating surf scene of Lisbon with the Portuguese Surf Retreat. This tour combines surfing at some of Portugal's best beaches with opportunities to explore the rich culture and history of Lisbon. Enjoy personalized surf lessons, guided surf excursions, and experiences that highlight Lisbon’s vibrant atmosphere. From surf sessions to cultural explorations, this tour offers a perfect blend of adventure and relaxation in one of Europe's most enchanting cities.",
+      "included": [
+        "Personal surf lessons",
+        "Free Wi-Fi",
+        "Excursions",
+        "Three meals per day",
+        "Equipment rental"
+      ],
+      "activities": [
+        {
+          "name": "Carcavelos Beach Surfing",
+          "description": "Surf at Carcavelos Beach, known for its consistent waves and welcoming surf conditions. Perfect for both beginners and experienced surfers."
+        },
+        {
+          "name": "Lisbon City Tour",
+          "description": "Explore the historic and cultural sites of Lisbon, including landmarks, museums, and local neighborhoods. Discover the rich heritage and vibrant life of the city."
+        },
+        {
+          "name": "Sintra Day Trip",
+          "description": "Take a day trip to Sintra, a picturesque town known for its stunning palaces and natural beauty. Enjoy guided tours and explore the enchanting surroundings."
+        }
+      ],
+      "instructors": [
+        {
+          "name": "João Fernandes",
+          "age": 34,
+          "background": "João Fernandes has been surfing and teaching in Portugal for over a decade. Known for his detailed and encouraging teaching style, João helps surfers of all levels refine their skills and enjoy their time in the water. His local knowledge and passion for surfing make him a highly sought-after instructor."
+        },
+        {
+          "name": "Ana Costa",
+          "age": 32,
+          "background": "Ana Costa's surfing career began in Portugal, where she developed a reputation for her dynamic teaching methods and expertise. Her approach focuses on building confidence and technique, and she is known for her supportive and motivating demeanor. Ana's enthusiasm for surfing and commitment to her students make her an excellent choice for this tour."
+        }
+      ]
+    }
+  ]
+  
