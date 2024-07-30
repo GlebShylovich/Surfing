@@ -4,11 +4,14 @@ import { getUserData } from "../../Services/services";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../Services/slices/user";
+import data from "../../../tours.json";
+import Card from "../../Components/Сard/Card";
 import filterIcon from "../../assets/miniFilterIcon.svg";
 import profileIcon from "../../assets/miniProfilePic.svg";
 import "./Home.scss";
 
 export default function Home() {
+  const [tours, setTours] = useState(data);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const auth = getAuth();
@@ -37,26 +40,30 @@ export default function Home() {
 
   return (
     <div className="home">
+      <header className="home__header">
+        <h1 className="home__logo">surfvoyage</h1>
+        <nav className="home__navigation">
+          <li className="home__navigation-item">
+            <a href="/">
+              <img src={filterIcon} alt="filter" />
+            </a>
+          </li>
+          <li className="home__navigation-item">
+            <Link to="/profile">
+              <img src={profileIcon} alt="profile" />
+            </Link>
+          </li>
+        </nav>
+      </header>
+      <div className="home__search">
+        <input className="home__searchInput" type="text" placeholder="Search" />
+      </div>
       <div className="home__container">
-        <header className="home__header">
-          <h1 className="home__logo">surfvoyage</h1>
-          <nav className="home__navigation">
-            <li className="home__navigation-item">
-              <a href="/">
-                <img src={filterIcon} alt="filter" />
-              </a>
-            </li>
-            <li className="home__navigation-item">
-              <Link to="/profile">
-                <img src={profileIcon} alt="filter" />
-              </Link>
-            </li>
-          </nav>
-        </header>
-        <div className="home__search">
-          <input className="home__searchInput" type="text" placeholder="Search"/>
+        <div className="home__catalog">
+          {tours.map((item, index) => (
+            <Card key={index} info={item} />
+          ))}
         </div>
-        <div className="home__catalog"></div>
       </div>
     </div>
   );

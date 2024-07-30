@@ -6,60 +6,72 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  .home__container {
-    width: 330px;
+  background: rgb(245, 245, 245);
+  .home__header {
+    width: 100%;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    .home__header {
-      width: 100%;
+    justify-content: space-between;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.75);
+    .home__logo {
+      font-family: $family;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    .home__navigation {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      margin-top: 10px;
-      .home__logo {
-        font-family: $family;
-        font-size: 24px;
-        cursor: pointer;
-      }
-      .home__navigation {
+      list-style: none;
+      column-gap: 15px;
+      a {
+        text-decoration: none;
         display: flex;
         align-items: center;
-        list-style: none;
-        column-gap: 15px;
-        a {
-          text-decoration: none;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
+        justify-content: center;
       }
     }
-    .home__search {
+  }
+  .home__search {
+    padding: 15px;
+    width: 100%;
+    border-bottom: 0.33329999446868896px solid rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.75);
+    .home__searchInput {
+      font-family: $family;
       width: 100%;
-      margin: 10px 0;
-      .home__searchInput {
-        font-family: $family;
-        width: 100%;
-        background: $lightGray;
-        border-radius: 10px;
-        padding: 7px 15px;
-        border: 1px solid $lightGray;
+      background: $lightGray;
+      border-radius: 10px;
+      padding: 7px 15px;
+      border: 1px solid $lightGray;
+      font-size: 17px;
+      font-weight: $regular;
+      line-height: 22px;
+      letter-spacing: -0.4px;
+      text-align: left;
+      color: #3c3c4399;
+      &::placeholder {
         font-size: 17px;
         font-weight: $regular;
         line-height: 22px;
         letter-spacing: -0.4px;
         text-align: left;
         color: #3c3c4399;
-        &::placeholder {
-          font-size: 17px;
-          font-weight: $regular;
-          line-height: 22px;
-          letter-spacing: -0.4px;
-          text-align: left;
-          color: #3C3C4399;
-        }
       }
+    }
+  }
+  .home__container {
+    min-width: 330px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .home__catalog {
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      row-gap: 15px;
     }
   }
 }

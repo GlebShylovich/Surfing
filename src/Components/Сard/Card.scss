@@ -1,0 +1,99 @@
+@import "../../Styles/vars";
+@import "../../Styles/template";
+.card {
+  width: 100%;
+  border-radius: 20px;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  .card__carousel {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    & img {
+      width: 100%;
+      border-radius: 12px;
+      height: 250px;
+    }
+    .carousel__buttons {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 12px;
+      border-radius: 50px;
+      border: none;
+      backdrop-filter: blur(40px);
+      background: rgb(13, 13, 13), rgba(191, 191, 191, 0.44);
+      column-gap: 8px;
+      position: absolute;
+      bottom: 10px;
+      .carouselBtn {
+        height: 8px;
+        width: 8px;
+        background: rgb(0, 0, 0);
+        opacity: 0.3;
+        border-radius: 50px;
+        border: none;
+      }
+      .carouselBtn--active {
+        height: 8px;
+        width: 8px;
+        background: rgb(0, 0, 0);
+        border-radius: 50px;
+        border: none;
+      }
+    }
+  }
+  .card__info {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+    & div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .card__name {
+      color: $black;
+      font-family: $family;
+      font-size: 18px;
+      font-weight: $semibold;
+      line-height: 22px;
+      letter-spacing: 0%;
+      text-align: left;
+    }
+    .card__favorite{
+      background-color: #1995F5;
+      border-radius: 12.25px;
+      padding: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card__location {
+      display: flex;
+      align-items: center;
+      column-gap: 8px;
+      color: rgb(122, 122, 122);
+      font-family: $family;
+      font-size: 16px;
+      font-weight: $regular;
+      line-height: 19px;
+      letter-spacing: 0%;
+      text-align: left;
+    }
+    .card__price {
+      color: $black;
+      font-family: $family;
+      font-size: 20px;
+      font-weight: $bold;
+      line-height: 24px;
+      letter-spacing: 0%;
+      text-align: left;
+    }
+  }
+}
