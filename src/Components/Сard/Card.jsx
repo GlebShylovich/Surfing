@@ -13,6 +13,7 @@ export default function Card({ info }) {
       return;
     }
     setCount((prevCount) => prevCount + 1);
+    setActiveBtn((prevIndex) => prevIndex + 1);
   }
 
   function handlePrev() {
@@ -21,6 +22,7 @@ export default function Card({ info }) {
       return;
     }
     setCount((prevCount) => prevCount - 1);
+    setActiveBtn((prevIndex) => prevIndex - 1);
   }
 
   function handleCarouselClick(index) {
