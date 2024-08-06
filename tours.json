@@ -10,8 +10,8 @@
       "destination": "Bali, Indonesia",
       "mapLocation": "https://example.com/maplink1",
       "pricePerNight": {
-        "currency": "IDR",
-        "amount": 1200
+        "currency": "USD",
+        "amount": 200
       },
       "description": "Experience the thrill of surfing on the beautiful island of Bali. Known for its stunning beaches and consistent waves, Bali offers an ideal setting for surfers of all levels. This tour includes personalized surf lessons, comfortable accommodations, and a variety of exciting activities. Enjoy the vibrant culture and breathtaking landscapes of Bali while catching some of the best waves in the world.",
       "included": [
@@ -60,7 +60,7 @@
       "mapLocation": "https://example.com/maplink2",
       "pricePerNight": {
         "currency": "USD",
-        "amount": 250
+        "amount": 600
       },
       "description": "Discover the legendary surf of Hawaii with the Hawaiian Surf Odyssey. This tour features some of the most iconic surf spots in Oahu, combined with personalized coaching and a range of cultural experiences. Explore the rich heritage of Hawaii, from traditional sites to local markets, and enjoy thrilling surf sessions in paradise.",
       "included": [
@@ -104,8 +104,8 @@
       "destination": "Gold Coast, Australia",
       "mapLocation": "https://example.com/maplink4",
       "pricePerNight": {
-        "currency": "AUD",
-        "amount": 180
+        "currency": "USD",
+        "amount": 500
       },
       "description": "Explore the vibrant surf scene of Australia's Gold Coast with this Surf Expedition. The tour features some of the best surf spots along the coast, with opportunities to ride both powerful waves and mellow swells. Enjoy personalized coaching, comfortable accommodations, and a variety of activities designed to showcase the natural beauty and unique culture of the Gold Coast. Whether you're a seasoned pro or a beginner, this tour provides an unforgettable surfing experience in one of Australia's premier surf destinations.",
       "included": [
@@ -153,8 +153,8 @@
       "destination": "Tuscany, Italy",
       "mapLocation": "https://example.com/maplink5",
       "pricePerNight": {
-        "currency": "EUR",
-        "amount": 160
+        "currency": "USD",
+        "amount": 100
       },
       "description": "Combine your love for surfing with a taste of Tuscany in this unique Surf and Sip Retreat. Set against the backdrop of picturesque Italian landscapes, this tour offers a blend of thrilling surf sessions and relaxing vineyard visits. Enjoy personalized surf lessons, explore beautiful surf spots, and indulge in wine tastings and local cuisine. This retreat is perfect for those looking to balance their surfing passion with a culinary and cultural experience in one of Italy's most charming regions.",
       "included": [
@@ -251,8 +251,8 @@
       "destination": "Cape Town, South Africa",
       "mapLocation": "https://example.com/maplink7",
       "pricePerNight": {
-        "currency": "ZAR",
-        "amount": 2200
+        "currency": "USD",
+        "amount": 400
       },
       "description": "Embark on an unforgettable surf adventure in Cape Town with this South African Surf Expedition. This tour features world-class surf spots, personalized lessons, and guided tours of the best surf locations. In addition to surfing, enjoy opportunities to explore Cape Town's vibrant culture, wildlife, and breathtaking landscapes. This tour is ideal for those seeking both adventure and relaxation in one of Africa's most iconic surf destinations.",
       "included": [
@@ -300,8 +300,8 @@
       "destination": "Okinawa, Japan",
       "mapLocation": "https://example.com/maplink8",
       "pricePerNight": {
-        "currency": "JPY",
-        "amount": 18000
+        "currency": "USD",
+        "amount": 300
       },
       "description": "Experience the unique surf culture of Okinawa with this Japanese Surf Adventure. Known for its clear waters and beautiful coral reefs, Okinawa offers a distinctive surfing experience. This tour includes personalized surf lessons, guided tours of the best surf spots, and opportunities to explore Okinawa's rich cultural heritage. Enjoy the blend of surfing with visits to local temples, traditional markets, and picturesque beaches.",
       "included": [
@@ -349,8 +349,8 @@
       "destination": "Sayulita, Mexico",
       "mapLocation": "https://example.com/maplink9",
       "pricePerNight": {
-        "currency": "MXN",
-        "amount": 3500
+        "currency": "USD",
+        "amount": 500
       },
       "description": "Escape to the laid-back surf town of Sayulita with this Mexican Surf Escape. Known for its welcoming surf community and beautiful beaches, Sayulita offers a perfect setting for a surfing getaway. The tour includes personalized surf lessons, comfortable accommodations, and a variety of activities to explore the town and its surroundings. Enjoy authentic Mexican cuisine, vibrant local markets, and the relaxed atmosphere of this charming coastal town.",
       "included": [
@@ -398,8 +398,8 @@
       "destination": "Florianópolis, Brazil",
       "mapLocation": "https://example.com/maplink10",
       "pricePerNight": {
-        "currency": "BRL",
-        "amount": 600
+        "currency": "USD",
+        "amount": 400
       },
       "description": "Explore the vibrant surf scene of Florianópolis with this Brazilian Surf Expedition. Known for its beautiful beaches and consistent waves, Florianópolis offers a dynamic surfing experience. This tour features personalized surf lessons, guided surf excursions, and opportunities to enjoy the local culture and cuisine. From surfing the waves to exploring the city, this tour provides an exciting and immersive experience in one of Brazil's top surf destinations.",
       "included": [
@@ -447,8 +447,8 @@
       "destination": "Lisbon, Portugal",
       "mapLocation": "https://example.com/maplink11",
       "pricePerNight": {
-        "currency": "EUR",
-        "amount": 140
+        "currency": "USD",
+        "amount": 700
       },
       "description": "Discover the captivating surf scene of Lisbon with the Portuguese Surf Retreat. This tour combines surfing at some of Portugal's best beaches with opportunities to explore the rich culture and history of Lisbon. Enjoy personalized surf lessons, guided surf excursions, and experiences that highlight Lisbon’s vibrant atmosphere. From surf sessions to cultural explorations, this tour offers a perfect blend of adventure and relaxation in one of Europe's most enchanting cities.",
       "included": [

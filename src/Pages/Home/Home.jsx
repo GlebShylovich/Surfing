@@ -6,12 +6,14 @@ import { useDispatch } from "react-redux";
 import { setUser } from "../../Services/slices/user";
 import data from "../../../tours.json";
 import Card from "../../Components/Сard/Card";
+import Filter from "../../Components/Filter/Filter";
 import filterIcon from "../../assets/miniFilterIcon.svg";
 import profileIcon from "../../assets/miniProfilePic.svg";
 import "./Home.scss";
 
 export default function Home() {
   const [tours, setTours] = useState(data);
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const auth = getAuth();
@@ -40,11 +42,18 @@ export default function Home() {
 
   return (
     <div className="home">
+      {isFilterOpen && (
+        <Filter data={tours} setIsFilterOpen={setIsFilterOpen} setTours={setTours} />
+      )}
       <header className="home__header">
         <h1 className="home__logo">surfvoyage</h1>
         <nav className="home__navigation">
           <li className="home__navigation-item">
-            <a href="/">
+            <a
+              onClick={() => {
+                setIsFilterOpen(true);
+              }}
+            >
               <img src={filterIcon} alt="filter" />
             </a>
           </li>
