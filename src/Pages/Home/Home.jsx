@@ -43,7 +43,7 @@ export default function Home() {
   return (
     <div className="home">
       {isFilterOpen && (
-        <Filter data={tours} setIsFilterOpen={setIsFilterOpen} setTours={setTours} />
+        <Filter setIsFilterOpen={setIsFilterOpen} setTours={setTours} />
       )}
       <header className="home__header">
         <h1 className="home__logo">surfvoyage</h1>

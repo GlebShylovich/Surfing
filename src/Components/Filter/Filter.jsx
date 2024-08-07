@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import Slider from "rc-slider";
 import close from "../../assets/close.svg";
+import data from "../../../tours.json"
 import "rc-slider/assets/index.css";
 import "./Filter.scss";
 
-export default function Filter({ data, setIsFilterOpen, setTours }) {
+export default function Filter({ setIsFilterOpen, setTours }) {
   const prices = data.map((item) => item.pricePerNight.amount);
   const initialRange = [Math.min(...prices), Math.max(...prices)];
 
