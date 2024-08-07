@@ -1,16 +1,34 @@
 import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setFilterParams } from "../../Services/slices/filter";
 import Slider from "rc-slider";
 import close from "../../assets/close.svg";
-import data from "../../../tours.json"
+import data from "../../../tours.json";
 import "rc-slider/assets/index.css";
 import "./Filter.scss";
 
 export default function Filter({ setIsFilterOpen, setTours }) {
+  const dispatch = useDispatch();
   const prices = data.map((item) => item.pricePerNight.amount);
-  const initialRange = [Math.min(...prices), Math.max(...prices)];
+  const filterData = useSelector((state) => state.filter);
+  console.log(filterData);
+  
+  const initialRange = [filterData.initialMinPrice, filterData.initialMaxPrice];
+  const userRange = [filterData.minPrice, filterData.maxPrice];
 
-  const [range, setRange] = useState(initialRange);
+  const [range, setRange] = useState(userRange || initialRange);
   const [initialRangeState, setInitialRangeState] = useState(initialRange);
+
+  useEffect(() => {
+    const initMinPrice = Math.min(...prices);
+    const initMaxPrice = Math.max(...prices);
+    dispatch(
+      setFilterParams({
+        initialMinPrice: initMinPrice,
+        initialMaxPrice: initMaxPrice,
+      })
+    );
+  }, []);
 
   const toursAmount = () => {
     return data.filter(
@@ -24,6 +42,7 @@ export default function Filter({ setIsFilterOpen, setTours }) {
 
   const handleRangeChange = (newRange) => {
     setRange(newRange);
+    dispatch(setFilterParams({minPrice: range[0], maxPrice: range[1]}))
   };
 
   const resetRange = () => {
@@ -100,6 +119,50 @@ export default function Filter({ setIsFilterOpen, setTours }) {
           value={range}
           onChange={handleRangeChange}
         />
+      </div>
+      <div className="filter__checkboxes">
+        <div className="filter__checkboxes-info">
+          <div className="filter__checkboxes-title">Filters</div>
+          <div className="filter__checkboxes-reset">Reset</div>
+        </div>
+        <div className="filter__checkboxes-container">
+          <div className="filter__checkbox-item">
+            <label>Personal surf lessons</label>
+            <input type="checkbox" />
+          </div>
+          <div className="filter__checkbox-item">
+            <label>Free Wi-Fi</label>
+            <input type="checkbox" />
+          </div>
+          <div className="filter__checkbox-item">
+            <label>5 stars</label>
+            <input type="checkbox" />
+          </div>
+          <div className="filter__checkbox-item">
+            <label>Excursions</label>
+            <input type="checkbox" />
+          </div>
+          <div className="filter__checkbox-item">
+            <label>Three meals per day</label>
+            <input type="checkbox" />
+          </div>
+          <div className="filter__checkbox-item">
+            <label>Equipment rental</label>
+            <input type="checkbox" />
+          </div>
+          <div className="filter__checkbox-item">
+            <label>First coastal</label>
+            <input type="checkbox" />
+          </div>
+          <div className="filter__checkbox-item">
+            <label>Hotel</label>
+            <input type="checkbox" />
+          </div>
+          <div className="filter__checkbox-item">
+            <label>Camping</label>
+            <input type="checkbox" />
+          </div>
+        </div>
       </div>
       <div className="filter__showResults">
         <div className="filter__showResults-amount">
