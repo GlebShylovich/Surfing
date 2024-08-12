@@ -14,6 +14,7 @@ import "./Home.scss";
 export default function Home() {
   const [tours, setTours] = useState(data);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const auth = getAuth();
@@ -70,7 +71,7 @@ export default function Home() {
       <div className="home__container">
         <div className="home__catalog">
           {tours.map((item, index) => (
-            <Card key={index} info={item} />
+            <Card key={index} info={item} setIsOpen={setIsModalOpen}/>
           ))}
         </div>
       </div>

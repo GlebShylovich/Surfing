@@ -12,11 +12,13 @@ export default function Filter({ setIsFilterOpen, setTours }) {
   const prices = data.map((item) => item.pricePerNight.amount);
   const filterData = useSelector((state) => state.filter);
   console.log(filterData);
-  
+
   const initialRange = [filterData.initialMinPrice, filterData.initialMaxPrice];
   const userRange = [filterData.minPrice, filterData.maxPrice];
 
-  const [range, setRange] = useState(userRange || initialRange);
+  const [range, setRange] = useState(
+    userRange[0] !== null && userRange[1] !== null ? userRange : initialRange
+  );
   const [initialRangeState, setInitialRangeState] = useState(initialRange);
 
   useEffect(() => {
@@ -28,6 +30,13 @@ export default function Filter({ setIsFilterOpen, setTours }) {
         initialMaxPrice: initMaxPrice,
       })
     );
+    if (userRange[0] !== null && userRange[1] !== null) {
+      setRange(userRange);
+    } else {
+      setRange([initMinPrice, initMaxPrice]);
+    }
+
+    setInitialRangeState([initMinPrice, initMaxPrice]);
   }, []);
 
   const toursAmount = () => {
@@ -42,11 +51,14 @@ export default function Filter({ setIsFilterOpen, setTours }) {
 
   const handleRangeChange = (newRange) => {
     setRange(newRange);
-    dispatch(setFilterParams({minPrice: range[0], maxPrice: range[1]}))
+    dispatch(setFilterParams({ minPrice: range[0], maxPrice: range[1] }));
   };
 
   const resetRange = () => {
-    setRange(initialRangeState);
+    setRange(initialRange);
+    dispatch(
+      setFilterParams({ minPrice: initialRange[0], maxPrice: initialRange[1] })
+    );
   };
 
   const calculatePriceFrequency = (prices) => {
@@ -119,51 +131,52 @@ export default function Filter({ setIsFilterOpen, setTours }) {
           value={range}
           onChange={handleRangeChange}
         />
-      </div>
-      <div className="filter__checkboxes">
-        <div className="filter__checkboxes-info">
-          <div className="filter__checkboxes-title">Filters</div>
-          <div className="filter__checkboxes-reset">Reset</div>
+        <div className="filter__checkboxes">
+          <div className="filter__checkboxes-info">
+            <div className="filter__checkboxes-title">Filters</div>
+            <div className="filter__checkboxes-reset">Reset</div>
+          </div>
+          <div className="filter__checkboxes-container">
+            <div className="filter__checkbox-item">
+              <label>Personal surf lessons</label>
+              <input type="checkbox" />
+            </div>
+            <div className="filter__checkbox-item">
+              <label>Free Wi-Fi</label>
+              <input type="checkbox" />
+            </div>
+            <div className="filter__checkbox-item">
+              <label>5 stars</label>
+              <input type="checkbox" />
+            </div>
+            <div className="filter__checkbox-item">
+              <label>Excursions</label>
+              <input type="checkbox" />
+            </div>
+            <div className="filter__checkbox-item">
+              <label>Three meals per day</label>
+              <input type="checkbox" />
+            </div>
+            <div className="filter__checkbox-item">
+              <label>Equipment rental</label>
+              <input type="checkbox" />
+            </div>
+            <div className="filter__checkbox-item">
+              <label>First coastal</label>
+              <input type="checkbox" />
+            </div>
+            <div className="filter__checkbox-item">
+              <label>Hotel</label>
+              <input type="checkbox" />
+            </div>
+            <div className="filter__checkbox-item">
+              <label>Camping</label>
+              <input type="checkbox" />
+            </div>
+          </div>
         </div>
-        <div className="filter__checkboxes-container">
-          <div className="filter__checkbox-item">
-            <label>Personal surf lessons</label>
-            <input type="checkbox" />
-          </div>
-          <div className="filter__checkbox-item">
-            <label>Free Wi-Fi</label>
-            <input type="checkbox" />
-          </div>
-          <div className="filter__checkbox-item">
-            <label>5 stars</label>
-            <input type="checkbox" />
-          </div>
-          <div className="filter__checkbox-item">
-            <label>Excursions</label>
-            <input type="checkbox" />
-          </div>
-          <div className="filter__checkbox-item">
-            <label>Three meals per day</label>
-            <input type="checkbox" />
-          </div>
-          <div className="filter__checkbox-item">
-            <label>Equipment rental</label>
-            <input type="checkbox" />
-          </div>
-          <div className="filter__checkbox-item">
-            <label>First coastal</label>
-            <input type="checkbox" />
-          </div>
-          <div className="filter__checkbox-item">
-            <label>Hotel</label>
-            <input type="checkbox" />
-          </div>
-          <div className="filter__checkbox-item">
-            <label>Camping</label>
-            <input type="checkbox" />
-          </div>
-        </div>
       </div>
+
       <div className="filter__showResults">
         <div className="filter__showResults-amount">
           {toursAmount()} tours available

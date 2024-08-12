@@ -20,7 +20,8 @@
     .filter__header {
       width: 100%;
       position: relative;
-      padding: 20px 0;
+      padding: 10px 0;
+      border-bottom: 2px solid #eff1f3;
       .filter__closeBtn {
         position: absolute;
         display: flex;
@@ -28,7 +29,7 @@
         justify-content: center;
         border: none;
         background: none;
-        top: 25px;
+        top: 15px;
         left: 0;
       }
       .filter__title {
@@ -46,6 +47,7 @@
       display: flex;
       align-items: start;
       justify-content: space-between;
+      padding-top: 10px;
       .filter__range-info {
         display: flex;
         flex-direction: column;
@@ -105,8 +107,9 @@
     flex-direction: column;
     row-gap: 10px;
     bottom: 0;
-    left: 0;
-    width: 100%;
+    left: 50%;
+    transform: translate(-50%);
+    width: 400px;
     border-top: 2px solid #eff1f3;
     .filter__showResults-amount {
       color: $black;
@@ -127,7 +130,7 @@
   .rc-slider {
     padding: 0;
     width: 100%;
-    padding-bottom: 30px;
+    padding-bottom: 20px;
     border-bottom: 2px solid #eff1f3;
     .rc-slider-track {
       background-color: #1995f5;
@@ -146,6 +149,57 @@
       margin-top: -5.6px;
       background-color: #1995f5;
       opacity: 1;
+    }
+  }
+  .filter__checkboxes {
+    padding: 10px 0;
+    width: 100%;
+    .filter__checkboxes-info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .filter__checkboxes-title {
+        color: $black;
+        font-family: $family;
+        font-size: 16px;
+        font-weight: $bold;
+        line-height: -1px;
+        letter-spacing: 0%;
+        text-align: center;
+      }
+      .filter__checkboxes-reset {
+        border: none;
+        background: none;
+        color: #1995f5;
+        font-family: $family;
+        font-size: 16px;
+        font-weight: $medium;
+        line-height: 24.07px;
+        letter-spacing: 0px;
+        text-align: center;
+      }
+    }
+    .filter__checkboxes-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 0 ;
+      .filter__checkbox-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        & label {
+          color: #3c3c43cc;
+          font-family: $family;
+          font-size: 14px;
+          font-weight: $regular;
+          line-height: 20px;
+          letter-spacing: 0px;
+          text-align: left;
+        }
+      }
     }
   }
 }

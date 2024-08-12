@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.5",
+    "antd": "^5.20.0",
     "firebase": "^10.12.3",
     "rc-slider": "^11.1.5",
     "react": "^18.2.0",

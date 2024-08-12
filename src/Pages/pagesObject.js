@@ -5,4 +5,5 @@ import Login from './Login/Login';
 import Profile from './Profile/Profile';
 import Register from './Register/Register';
 import Settings from './Settings/Settings';
-export default {Auth, Error, Home, Login, Profile, Register, Settings};
+import Tour from './Tour/Tour';
+export default {Auth, Error, Home, Login, Profile, Register, Settings, Tour};

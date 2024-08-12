@@ -1,11 +1,16 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { useSwipeable } from "react-swipeable";
+import { setModal } from "../../Services/slices/modal";
 import mapPin from "../../assets/mapPin.svg";
 import "./Card.scss";
 
-export default function Card({ info }) {
+export default function Card({ info, setIsOpen }) {
   const [count, setCount] = useState(0);
   const [activeBtn, setActiveBtn] = useState(0);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   function handleNext() {
     if (count === info.images.length - 1) {
@@ -36,7 +41,13 @@ export default function Card({ info }) {
   });
 
   return (
-    <div className="card">
+    <div
+      className="card"
+      onClick={() => {
+        dispatch(setModal(info));
+        navigate(`/${info.token}`);
+      }}
+    >
       <div className="card__carousel" {...handlers}>
         <img src={info.images[count]} alt="" />
         <div className="carousel__buttons">
