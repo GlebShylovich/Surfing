@@ -8,18 +8,22 @@ import "rc-slider/assets/index.css";
 import "./Filter.scss";
 
 export default function Filter({ setIsFilterOpen, setTours }) {
-  const dispatch = useDispatch();
-  const prices = data.map((item) => item.pricePerNight.amount);
-  const filterData = useSelector((state) => state.filter);
-  console.log(filterData);
+  const [filterTags, setFilterTags] = useState([]);
+  const [filteredData, setFilteredData] = useState(data);
 
-  const initialRange = [filterData.initialMinPrice, filterData.initialMaxPrice];
-  const userRange = [filterData.minPrice, filterData.maxPrice];
+  const dispatch = useDispatch();
+
+  const prices = data.map((item) => item.pricePerNight.amount);
+  const filterRangeData = useSelector((state) => state.filter);
+
+  const initialRange = [filterRangeData.initialMinPrice, filterRangeData.initialMaxPrice];
+  const userRange = [filterRangeData.minPrice, filterRangeData.maxPrice];
+
+  const [initialRangeState, setInitialRangeState] = useState(initialRange);
 
   const [range, setRange] = useState(
     userRange[0] !== null && userRange[1] !== null ? userRange : initialRange
   );
-  const [initialRangeState, setInitialRangeState] = useState(initialRange);
 
   useEffect(() => {
     const initMinPrice = Math.min(...prices);
@@ -35,31 +39,56 @@ export default function Filter({ setIsFilterOpen, setTours }) {
     } else {
       setRange([initMinPrice, initMaxPrice]);
     }
-
     setInitialRangeState([initMinPrice, initMaxPrice]);
   }, []);
 
-  const toursAmount = () => {
-    return data.filter(
-      (item) =>
-        item.pricePerNight.amount >= range[0] &&
-        item.pricePerNight.amount <= range[1]
-    ).length;
+  useEffect(() => {
+    const newData = data.filter((tour) => {
+      const matchesTags = filterTags.length > 0
+        ? filterTags.every((filterTag) =>
+          tour.included.some((item) => item.toLowerCase()).includes(filterTag)
+        )
+        : true;
+
+      const matchesPrice =
+        tour.pricePerNight.amount >= range[0] &&
+        tour.pricePerNight.amount <= range[1];
+
+      return matchesTags && matchesPrice;
+    });
+
+    setFilteredData(newData);
+  }, [filterTags, range]);
+
+  const filterHandler = (event) => {
+    if (event.target.checked) {
+      setFilterTags([...filterTags, event.target.value.toLowerCase()]);
+    } else {
+      setFilterTags(
+        filterTags.filter((filterTag) => filterTag !== event.target.value.toLowerCase())
+      );
+    }
   };
 
-  const [minPrice, maxPrice] = range;
+  const toursAmount = () => {
+    return filteredData.length;
+  };
 
   const handleRangeChange = (newRange) => {
     setRange(newRange);
-    dispatch(setFilterParams({ minPrice: range[0], maxPrice: range[1] }));
+    dispatch(setFilterParams({ minPrice: newRange[0], maxPrice: newRange[1] }));
   };
 
   const resetRange = () => {
-    setRange(initialRange);
+    setRange(initialRangeState);
     dispatch(
-      setFilterParams({ minPrice: initialRange[0], maxPrice: initialRange[1] })
+      setFilterParams({ minPrice: initialRangeState[0], maxPrice: initialRangeState[1] })
     );
   };
+
+  const resetCheckboxes = () => {
+    setFilterTags([]);
+  }
 
   const calculatePriceFrequency = (prices) => {
     const priceFrequency = {};
@@ -115,7 +144,7 @@ export default function Filter({ setIsFilterOpen, setTours }) {
               Your budget (per night)
             </div>
             <div className="filter__range-info-budgetAmount">
-              {minPrice}$ USD - {maxPrice}$ USD
+              {range[0]}$ USD - {range[1]}$ USD
             </div>
           </div>
           <button onClick={resetRange} className="filter__range-reset">
@@ -134,44 +163,46 @@ export default function Filter({ setIsFilterOpen, setTours }) {
         <div className="filter__checkboxes">
           <div className="filter__checkboxes-info">
             <div className="filter__checkboxes-title">Filters</div>
-            <div className="filter__checkboxes-reset">Reset</div>
+            <div className="filter__checkboxes-reset" onClick={resetCheckboxes}>
+              Reset
+            </div>
           </div>
           <div className="filter__checkboxes-container">
             <div className="filter__checkbox-item">
               <label>Personal surf lessons</label>
-              <input type="checkbox" />
+              <input value="personal surf lessons" onChange={filterHandler} type="checkbox" />
             </div>
             <div className="filter__checkbox-item">
               <label>Free Wi-Fi</label>
-              <input type="checkbox" />
+              <input value="free wi-fi" onChange={filterHandler} type="checkbox" />
             </div>
             <div className="filter__checkbox-item">
               <label>5 stars</label>
-              <input type="checkbox" />
+              <input value="5 stars" onChange={filterHandler} type="checkbox" />
             </div>
             <div className="filter__checkbox-item">
               <label>Excursions</label>
-              <input type="checkbox" />
+              <input value="excursions" onChange={filterHandler} type="checkbox" />
             </div>
             <div className="filter__checkbox-item">
               <label>Three meals per day</label>
-              <input type="checkbox" />
+              <input value="three meals per day" onChange={filterHandler} type="checkbox" />
             </div>
             <div className="filter__checkbox-item">
               <label>Equipment rental</label>
-              <input type="checkbox" />
+              <input value="equipment rental" onChange={filterHandler} type="checkbox" />
             </div>
             <div className="filter__checkbox-item">
               <label>First coastal</label>
-              <input type="checkbox" />
+              <input value="first coastal" onChange={filterHandler} type="checkbox" />
             </div>
             <div className="filter__checkbox-item">
               <label>Hotel</label>
-              <input type="checkbox" />
+              <input value="hotel" onChange={filterHandler} type="checkbox" />
             </div>
             <div className="filter__checkbox-item">
               <label>Camping</label>
-              <input type="checkbox" />
+              <input value="camping" onChange={filterHandler} type="checkbox" />
             </div>
           </div>
         </div>
@@ -183,13 +214,7 @@ export default function Filter({ setIsFilterOpen, setTours }) {
         </div>
         <div
           onClick={() => {
-            setTours(
-              data.filter(
-                (item) =>
-                  item.pricePerNight.amount >= range[0] &&
-                  item.pricePerNight.amount <= range[1]
-              )
-            );
+            setTours(filteredData);
             setIsFilterOpen(false);
           }}
           className="filter__showResults-btn"
