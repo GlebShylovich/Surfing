@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { getAuth } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { clearModal } from "../../Services/slices/modal";
@@ -22,7 +23,6 @@ export default function Tour() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const data = useSelector((state) => state.modal.modalData);
-  console.log(data);
 
   useEffect(() => {
     if (!data) {
@@ -142,25 +142,6 @@ export default function Tour() {
       <div className="tour__included"></div>
       <div className="tour__naming">
         <h1 className="tour__name">{data.tourName}</h1>
-        <div className="tour__favorite">
-          <svg
-            width="15.216797"
-            height="14.471680"
-            viewBox="0 0 15.2168 14.4717"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-          >
-            <defs />
-            <path
-              id="Vector"
-              d="M7.6 11.83L2.9 14.47L3.95 9.18L0 5.52L5.35 4.89L7.6 0L9.86 4.89L15.21 5.52L11.25 9.18L12.31 14.47L7.6 11.83Z"
-              fill="#FFFFFF"
-              fill-opacity="1.000000"
-              fill-rule="nonzero"
-            />
-          </svg>
-        </div>
       </div>
       <div className="tour__calendar">
         <div className="tour__datePicker">

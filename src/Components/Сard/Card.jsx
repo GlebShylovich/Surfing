@@ -76,25 +76,6 @@ export default function Card({ info, setIsOpen }) {
       <div className="card__info">
         <div>
           <h1 className="card__name">{info.tourName}</h1>
-          <div className="card__favorite">
-            <svg
-              width="15.216797"
-              height="14.471680"
-              viewBox="0 0 15.2168 14.4717"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-            >
-              <defs />
-              <path
-                id="Vector"
-                d="M7.6 11.83L2.9 14.47L3.95 9.18L0 5.52L5.35 4.89L7.6 0L9.86 4.89L15.21 5.52L11.25 9.18L12.31 14.47L7.6 11.83Z"
-                fill="#FFFFFF"
-                fill-opacity="1.000000"
-                fill-rule="nonzero"
-              />
-            </svg>
-          </div>
         </div>
         <div>
           <div className="card__location">
