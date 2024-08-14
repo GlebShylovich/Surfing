@@ -46,8 +46,8 @@ export default function Filter({ setIsFilterOpen, setTours }) {
     const newData = data.filter((tour) => {
       const matchesTags = filterTags.length > 0
         ? filterTags.every((filterTag) =>
-          tour.included.some((item) => item.toLowerCase()).includes(filterTag)
-        )
+            tour.included.map((item) => item.toLowerCase()).includes(filterTag)
+          )
         : true;
 
       const matchesPrice =
