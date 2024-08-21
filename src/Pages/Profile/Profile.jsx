@@ -57,7 +57,12 @@ export default function Profile() {
         <h1 className="account__title">Hello, {user.name}</h1>
         <span className="account__email">{user.email}</span>
         <nav className="account__nav">
-          <div className="account__nav-item">
+          <div
+            onClick={() => {
+              navigate("/profile/favorite");
+            }}
+            className="account__nav-item"
+          >
             <img src={heart} alt="heart" />
             <span>Favorites</span>
           </div>
@@ -71,7 +76,7 @@ export default function Profile() {
           </div>
           <div
             onClick={() => {
-              navigate("/settings");
+              navigate("/profile/settings");
             }}
             className="account__nav-item"
           >

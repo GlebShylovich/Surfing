@@ -4,12 +4,18 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { clearModal } from "../../Services/slices/modal";
 import { useSwipeable } from "react-swipeable";
+import {
+  useAddLikeData,
+  useFetchLikes,
+  useRemoveLikeData,
+} from "../../Common/likes";
 import Map from "../../Components/Map/Map";
 import { DatePicker } from "antd";
 import mapPin from "../../assets/mapPin.svg";
 import secondBackBtn from "../../assets/secondBackBtn.svg";
 import shareBtn from "../../assets/shareBtn.svg";
 import likeBtn from "../../assets/likeBtn.svg";
+import { FaHeart } from "react-icons/fa6";
 import "./Tour.scss";
 
 export default function Tour() {
@@ -20,15 +26,38 @@ export default function Tour() {
   const [price, setPrice] = useState("");
   const [dateError, setDateError] = useState(false);
   const [currentDateError, setCurrentDateError] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
+  const [likeKey, setLikeKey] = useState(null);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const data = useSelector((state) => state.modal.modalData);
+  const auth = getAuth();
+  const userId = auth.currentUser?.uid;
+  const addLikeData = useAddLikeData();
+  const removeLikeData = useRemoveLikeData();
 
   useEffect(() => {
     if (!data) {
       navigate("/");
     }
-  }, []);
+  }, [data, navigate]);
+
+  useEffect(() => {
+    async function checkIfLiked() {
+      const { data: likes } = await useFetchLikes(userId);
+      const existingLike = likes.find(
+        (like) => like.tourData.token === data.token
+      );
+      if (existingLike) {
+        setIsLiked(true);
+        setLikeKey(existingLike.likeKey);
+      }
+    }
+    if (userId && data) {
+      checkIfLiked();
+    }
+  }, [userId, data]);
 
   useEffect(() => {
     const currentDate = new Date().toISOString().split("T")[0];
@@ -58,7 +87,7 @@ export default function Tour() {
   }, [firstDate, secondDate]);
 
   function handleNext() {
-    if (count === info.images.length - 1) {
+    if (count === data.images.length - 1) {
       setCount(0);
       return;
     }
@@ -68,7 +97,7 @@ export default function Tour() {
 
   function handlePrev() {
     if (count === 0) {
-      setCount(info.images.length - 1);
+      setCount(data.images.length - 1);
       return;
     }
     setCount((prevCount) => prevCount - 1);
@@ -93,6 +122,38 @@ export default function Tour() {
     return dayDifference;
   }
 
+  const handleLikeToggle = async () => {
+    try {
+      if (isLiked) {
+        if (likeKey) {
+          await removeLikeData.mutateAsync({ userId, likeKey });
+          setIsLiked(false);
+          setLikeKey(null);
+        }
+      } else {
+        const newLikeKey = await addLikeData.mutateAsync({
+          userId,
+          tourData: {
+            token: data.token,
+            tourName: data.tourName,
+            images: data.images,
+            destination: data.destination,
+            mapLocation: data.mapLocation,
+            pricePerNight: data.pricePerNight,
+            description: data.description,
+            included: data.included,
+            activities: data.activities,
+            instructors: data.instructors,
+          },
+        });
+        setIsLiked(true);
+        setLikeKey(newLikeKey);
+      }
+    } catch (error) {
+      alert(`Error processing like: ${error.message}`);
+    }
+  };
+
   return (
     <div className="tour">
       <div className="tour__navPanel">
@@ -106,11 +167,8 @@ export default function Tour() {
           <img src={secondBackBtn} alt="" />
         </button>
         <div className="tour__navPanel-actions">
-          <button className="tour__shareBtn">
-            <img src={shareBtn} alt="" />
-          </button>
-          <button className="tour__likeBtn">
-            <img src={likeBtn} alt="" />
+          <button className="tour__likeBtn" onClick={handleLikeToggle}>
+            {isLiked ? <FaHeart /> : <img src={likeBtn} alt="Like" />}
           </button>
         </div>
       </div>

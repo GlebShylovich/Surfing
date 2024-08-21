@@ -6,4 +6,5 @@ import Profile from './Profile/Profile';
 import Register from './Register/Register';
 import Settings from './Settings/Settings';
 import Tour from './Tour/Tour';
-export default {Auth, Error, Home, Login, Profile, Register, Settings, Tour};
+import Favorite from './Favorite/Favorite';
+export default {Auth, Error, Home, Login, Profile, Register, Settings, Tour, Favorite};

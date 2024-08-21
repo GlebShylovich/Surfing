@@ -12,12 +12,25 @@ import profileIcon from "../../assets/miniProfilePic.svg";
 import "./Home.scss";
 
 export default function Home() {
-  const [tours, setTours] = useState(data);
+  const [filterValue, setFilterValue] = useState("");
+  const [tours, setTours] = useState([]);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const auth = getAuth();
+
+  useEffect(() => {
+    if (!filterValue) {
+      setTours(data);
+    } else {
+      const filteredData = data.filter((item) =>
+        item.tourName.toLowerCase().includes(filterValue.toLowerCase())
+      );
+      setTours(filteredData);
+    }
+  }, [filterValue]);
+
   useEffect(() => {
     fetchUserData();
   }, []);
@@ -66,12 +79,20 @@ export default function Home() {
         </nav>
       </header>
       <div className="home__search">
-        <input className="home__searchInput" type="text" placeholder="Search" />
+        <input
+          value={filterValue}
+          onChange={(e) => {
+            setFilterValue(e.target.value);
+          }}
+          className="home__searchInput"
+          type="text"
+          placeholder="Search"
+        />
       </div>
       <div className="home__container">
         <div className="home__catalog">
           {tours.map((item, index) => (
-            <Card key={index} info={item} setIsOpen={setIsModalOpen}/>
+            <Card key={index} info={item} setIsOpen={setIsModalOpen} />
           ))}
         </div>
       </div>

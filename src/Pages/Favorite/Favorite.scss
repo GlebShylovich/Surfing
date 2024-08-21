@@ -1,0 +1,70 @@
+@import "../../Styles/vars";
+@import "../../Styles/template";
+.favorite {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+.goBackBtn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  border: none;
+  background: none;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+.likedTour {
+  width: 100%;
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  position: relative;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  row-gap: 5px;
+  & span {
+    color: $black;
+    font-family: $family;
+    font-size: 16px;
+    font-weight: $bold;
+    line-height: 24px;
+    letter-spacing: 0%;
+    text-align: left;
+  }
+  .likedTour__location {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    color: rgb(122, 122, 122);
+    font-family: $family;
+    font-size: 16px;
+    font-weight: $regular;
+    line-height: 19px;
+    letter-spacing: 0%;
+    text-align: left;
+  }
+  & button {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    padding: 10px;
+    transform: translateY(-50%);
+    border: none;
+    background: none;
+    color: #1995f5;
+    font-family: $family;
+    font-size: 16px;
+    font-weight: $medium;
+    line-height: 24.07px;
+    letter-spacing: 0px;
+    text-align: center;
+  }
+}
