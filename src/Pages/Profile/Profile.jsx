@@ -67,10 +67,6 @@ export default function Profile() {
             <span>Favorites</span>
           </div>
           <div className="account__nav-item">
-            <img src={briefcase} alt="briefcase" />
-            <span>My trips</span>
-          </div>
-          <div className="account__nav-item">
             <img src={customerService} alt="customerService" />
             <span>Customer service</span>
           </div>

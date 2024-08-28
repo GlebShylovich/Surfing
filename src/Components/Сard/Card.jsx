@@ -6,7 +6,9 @@ import { setModal } from "../../Services/slices/modal";
 import mapPin from "../../assets/mapPin.svg";
 import "./Card.scss";
 
-export default function Card({ info, setIsOpen }) {
+export default function Card({ info }) {
+  console.log(info);
+  
   const [count, setCount] = useState(0);
   const [activeBtn, setActiveBtn] = useState(0);
   const dispatch = useDispatch();

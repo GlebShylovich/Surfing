@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getUserData } from "../../Services/services";
+import { setUser } from "../../Services/slices/user";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setUser } from "../../Services/slices/user";
 import data from "../../../tours.json";
 import Card from "../../Components/Сard/Card";
 import Filter from "../../Components/Filter/Filter";
@@ -12,13 +12,12 @@ import profileIcon from "../../assets/miniProfilePic.svg";
 import "./Home.scss";
 
 export default function Home() {
-  const [filterValue, setFilterValue] = useState("");
-  const [tours, setTours] = useState([]);
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const auth = getAuth();
+  const [filterValue, setFilterValue] = useState("");
+  const [tours, setTours] = useState([]);
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   useEffect(() => {
     if (!filterValue) {
@@ -92,7 +91,7 @@ export default function Home() {
       <div className="home__container">
         <div className="home__catalog">
           {tours.map((item, index) => (
-            <Card key={index} info={item} setIsOpen={setIsModalOpen} />
+            <Card key={index} info={item}/>
           ))}
         </div>
       </div>

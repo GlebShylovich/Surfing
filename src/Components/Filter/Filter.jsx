@@ -169,8 +169,8 @@ export default function Filter({ setIsFilterOpen, setTours }) {
           </div>
           <div className="filter__checkboxes-container">
             <div className="filter__checkbox-item">
-              <label>Personal surf lessons</label>
-              <input value="personal surf lessons" onChange={filterHandler} type="checkbox" />
+              <label>Surf lessons</label>
+              <input value="Surf lessons" onChange={filterHandler} type="checkbox" />
             </div>
             <div className="filter__checkbox-item">
               <label>Free Wi-Fi</label>

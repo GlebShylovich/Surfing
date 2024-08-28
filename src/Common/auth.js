@@ -14,7 +14,7 @@ export function login(auth, email, password, navigate) {
     });
 }
 
-export function register(auth, email, password, name, database, dispatch) {
+export function register(auth, email, password, database) {
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;

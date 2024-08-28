@@ -11,7 +11,6 @@
     align-items: center;
     justify-content: space-between;
     .tour__goBackBtn,
-    .tour__shareBtn,
     .tour__likeBtn {
       height: 35px;
       width: 35px;
@@ -21,6 +20,11 @@
       border-radius: 10px;
       background: white;
       border: none;
+      & svg{
+        width: 17px;
+        height: 17px;
+        margin: 0 auto;
+      }
     }
     .tour__navPanel-actions {
       display: flex;
@@ -67,6 +71,44 @@
       }
     }
   }
+  .tour__included {
+    padding: 10px;
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    .tour__included-item {
+      flex-basis: 19%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .tour__included-item-img {
+        background: #eaeaec;
+        height: 50px;
+        width: 50px;
+        border: none;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5px;
+        margin-bottom: 5px;
+        & img {
+          height: 24px;
+          width: 24px;
+        }
+      }
+      & p {
+        color: $black;
+        font-family: $family;
+        font-size: 11px;
+        font-weight: $regular;
+        line-height: -1px;
+        letter-spacing: 0%;
+        text-align: center;
+        width: 80%;
+      }
+    }
+  }
   .tour__naming {
     display: flex;
     align-items: start;
@@ -81,15 +123,7 @@
       line-height: 29px;
       letter-spacing: 0%;
       text-align: left;
-      flex-basis: 85%;
-    }
-    .tour__favorite {
-      background-color: #1995f5;
-      border-radius: 12.25px;
-      padding: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      flex-basis: 100%;
     }
   }
   .tour__calendar {
@@ -153,6 +187,59 @@
       line-height: -1px;
       letter-spacing: 0%;
       text-align: left;
+    }
+  }
+  .tour__description {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    .tour__description-title {
+      color: rgb(0, 0, 0);
+      font-family: $family;
+      font-size: 16px;
+      font-weight: $bold;
+      line-height: 19px;
+      letter-spacing: 0%;
+      text-align: left;
+      margin-bottom: 10px;
+    }
+    .tour__description-text {
+      color: rgb(137, 138, 141);
+      font-family: $family;
+      font-size: 14px;
+      font-weight: $regular;
+      line-height: 17px;
+      letter-spacing: 0%;
+      text-align: left;
+    }
+  }
+  .tour__activities {
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    .tour__activities-title {
+      color: rgb(0, 0, 0);
+      font-family: $family;
+      font-size: 16px;
+      font-weight: $bold;
+      line-height: 19px;
+      letter-spacing: 0%;
+      text-align: left;
+      margin-bottom: 10px;
+    }
+    .tour__activities-text {
+      color: rgb(137, 138, 141);
+      font-family: $family;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 17px;
+      letter-spacing: 0%;
+      text-align: left;
+      & span {
+        font-weight: $bold;
+      }
     }
   }
 }

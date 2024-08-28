@@ -15,13 +15,28 @@
       "amount": 200
     },
     "description": "Experience the thrill of surfing on the beautiful island of Bali. Known for its stunning beaches and consistent waves, Bali offers an ideal setting for surfers of all levels. This tour includes personalized surf lessons, comfortable accommodations, and a variety of exciting activities. Enjoy the vibrant culture and breathtaking landscapes of Bali while catching some of the best waves in the world.",
-    "included": [
-      "Personal surf lessons",
-      "Free Wi-Fi",
-      "5 stars",
-      "Three meals per day",
-      "Equipment rental"
-    ],
+    "included": {
+      "personalSurfLessons": [
+        "Surf lessons" ,
+        "/src/assets/surf.png"
+      ],
+      "freeWifi":  [
+        "Free Wi-Fi",
+        "/src/assets/wifi.svg"
+      ],
+      "5stars": [
+        "5 stars",
+        "/src/assets/stars.png"
+      ],
+      "threeMealsPerDay": [
+        "Three meals",
+        "/src/assets/meal.png"
+      ],
+      "equipmentRental": [
+        "Equipment rental",
+        "/src/assets/equipment.png"
+      ]
+    },
     "activities": [
       {
         "name": "Beach Surf Sessions",
@@ -65,13 +80,28 @@
       "amount": 600
     },
     "description": "Discover the legendary surf of Hawaii with the Hawaiian Surf Odyssey. This tour features some of the most iconic surf spots in Oahu, combined with personalized coaching and a range of cultural experiences. Explore the rich heritage of Hawaii, from traditional sites to local markets, and enjoy thrilling surf sessions in paradise.",
-    "included": [
-      "Personal surf lessons",
-      "Free Wi-Fi",
-      "Excursions",
-      "Three meals per day",
-      "Equipment rental"
-    ],
+    "included": {
+      "personalSurfLessons": [
+        "Surf lessons",
+        "./src/assets/surf.png"
+      ],
+      "freeWifi":  [
+        "Free Wi-Fi",
+        "./src/assets/wifi.svg"
+      ],
+      "excursions": [
+        "Excursions",
+        "./src/assets/excursion.png"
+      ],
+      "threeMealsPerDay": [
+        "Three meals",
+        "./src/assets/meal.png"
+      ],
+      "equipmentRental": [
+        "Equipment rental",
+        "./src/assets/equipment.png"
+      ]
+    },
     "activities": [
       {
         "name": "Waikiki Beach Surfing",
@@ -111,13 +141,28 @@
       "amount": 500
     },
     "description": "Explore the vibrant surf scene of Australia's Gold Coast with this Surf Expedition. The tour features some of the best surf spots along the coast, with opportunities to ride both powerful waves and mellow swells. Enjoy personalized coaching, comfortable accommodations, and a variety of activities designed to showcase the natural beauty and unique culture of the Gold Coast. Whether you're a seasoned pro or a beginner, this tour provides an unforgettable surfing experience in one of Australia's premier surf destinations.",
-    "included": [
-      "Personal surf lessons",
-      "Free Wi-Fi",
-      "Excursions",
-      "First coastal",
-      "Equipment rental"
-    ],
+    "included": {
+      "personalSurfLessons": [
+        "Surf lessons",
+        "./src/assets/surf.png"
+      ],
+      "freeWifi":  [
+        "Free Wi-Fi",
+        "./src/assets/wifi.svg"
+      ],
+      "excursions": [
+        "Excursions",
+        "./src/assets/excursion.png"
+      ],
+      "firstCoastal": [
+        "First coastal",
+        "./src/assets/coastal.png"
+      ],
+      "equipmentRental": [
+        "Equipment rental",
+        "./src/assets/equipment.png"
+      ]
+    },
     "activities": [
       {
         "name": "Surfers Paradise Beach Day",
@@ -161,13 +206,28 @@
       "amount": 100
     },
     "description": "Combine your love for surfing with a taste of Tuscany in this unique Surf and Sip Retreat. Set against the backdrop of picturesque Italian landscapes, this tour offers a blend of thrilling surf sessions and relaxing vineyard visits. Enjoy personalized surf lessons, explore beautiful surf spots, and indulge in wine tastings and local cuisine. This retreat is perfect for those looking to balance their surfing passion with a culinary and cultural experience in one of Italy's most charming regions.",
-    "included": [
-      "Personal surf lessons",
-      "Free Wi-Fi",
-      "5 stars",
-      "Three meals per day",
-      "Equipment rental"
-    ],
+    "included": {
+      "personalSurfLessons": [
+        "Surf lessons",
+        "./src/assets/surf.png"
+      ],
+      "freeWifi":  [
+        "Free Wi-Fi",
+        "./src/assets/wifi.svg"
+      ],
+      "5stars": [
+        "5 stars",
+        "./src/assets/stars.png"
+      ],
+      "threeMealsPerDay": [
+        "Three meals",
+        "./src/assets/meal.png"
+      ],
+      "equipmentRental": [
+        "Equipment rental",
+        "./src/assets/equipment.png"
+      ]
+    },
     "activities": [
       {
         "name": "Vineyard Tour and Wine Tasting",
@@ -211,13 +271,28 @@
       "amount": 200
     },
     "description": "Immerse yourself in the laid-back vibes of Jamaica with this Caribbean Surf and Relaxation tour. Enjoy surfing on some of the island’s best waves while experiencing the island's vibrant culture and natural beauty. This tour includes personalized surf coaching, comfortable accommodations, and opportunities to explore Jamaica's unique attractions. From surfing to relaxing on the beach, this tour offers the perfect blend of adventure and relaxation in a tropical paradise.",
-    "included": [
-      "Personal surf lessons",
-      "First coastal",
-      "Excursions",
-      "Three meals per day",
-      "Camping"
-    ],
+    "included": {
+      "personalSurfLessons": [
+        "Surf lessons",
+        "./src/assets/surf.png"
+      ],
+      "freeWifi":  [
+        "Free Wi-Fi",
+        "./src/assets/wifi.svg"
+      ],
+      "excursions": [
+        "Excursions",
+        "./src/assets/excursion.png"
+      ],
+      "threeMealsPerDay": [
+        "Three meals",
+        "./src/assets/meal.png"
+      ],
+      "camping": [
+        "Camping",
+        "./src/assets/camping.png"
+      ]
+    },
     "activities": [
       {
         "name": "Seven Mile Beach Day",
@@ -261,13 +336,28 @@
       "amount": 400
     },
     "description": "Embark on an unforgettable surf adventure in Cape Town with this South African Surf Expedition. This tour features world-class surf spots, personalized lessons, and guided tours of the best surf locations. In addition to surfing, enjoy opportunities to explore Cape Town's vibrant culture, wildlife, and breathtaking landscapes. This tour is ideal for those seeking both adventure and relaxation in one of Africa's most iconic surf destinations.",
-    "included": [
-      "Personal surf lessons",
-      "Free Wi-Fi",
-      "Excursions",
-      "Camping",
-      "Equipment rental"
-    ],
+    "included": {
+      "personalSurfLessons": [
+        "Surf lessons",
+        "./src/assets/surf.png"
+      ],
+      "freeWifi":  [
+        "Free Wi-Fi",
+        "./src/assets/wifi.svg"
+      ],
+      "excursions": [
+        "Excursions",
+        "./src/assets/excursion.png"
+      ],
+      "camping": [
+        "Camping",
+        "./src/assets/camping.png"
+      ],
+      "equipmentRental": [
+        "Equipment rental",
+        "./src/assets/equipment.png"
+      ]
+    },
     "activities": [
       {
         "name": "Cape Peninsula Tour",
@@ -311,13 +401,28 @@
       "amount": 300
     },
     "description": "Experience the unique surf culture of Okinawa with this Japanese Surf Adventure. Known for its clear waters and beautiful coral reefs, Okinawa offers a distinctive surfing experience. This tour includes personalized surf lessons, guided tours of the best surf spots, and opportunities to explore Okinawa's rich cultural heritage. Enjoy the blend of surfing with visits to local temples, traditional markets, and picturesque beaches.",
-    "included": [
-      "Personal surf lessons",
-      "Free Wi-Fi",
-      "Hotel",
-      "Three meals per day",
-      "Equipment rental"
-    ],
+    "included": {
+      "personalSurfLessons": [
+        "Surf lessons",
+        "./src/assets/surf.png"
+      ],
+      "freeWifi":  [
+        "Free Wi-Fi",
+        "./src/assets/wifi.svg"
+      ],
+      "hotel": [
+        "Hotel",
+        "./src/assets/hotel.png"
+      ],
+      "threeMealsPerDay": [
+        "Three meals",
+        "./src/assets/meal.png"
+      ],
+      "equipmentRental": [
+        "Equipment rental",
+        "./src/assets/equipment.png"
+      ]
+    },
     "activities": [
       {
         "name": "Coral Reef Exploration",
@@ -361,13 +466,28 @@
       "amount": 500
     },
     "description": "Escape to the laid-back surf town of Sayulita with this Mexican Surf Escape. Known for its welcoming surf community and beautiful beaches, Sayulita offers a perfect setting for a surfing getaway. The tour includes personalized surf lessons, comfortable accommodations, and a variety of activities to explore the town and its surroundings. Enjoy authentic Mexican cuisine, vibrant local markets, and the relaxed atmosphere of this charming coastal town.",
-    "included": [
-      "Personal surf lessons",
-      "Free Wi-Fi",
-      "Excursions",
-      "Three meals per day",
-      "Equipment rental"
-    ],
+    "included": {
+      "personalSurfLessons": [
+        "Surf lessons",
+        "./src/assets/surf.png"
+      ],
+      "freeWifi":  [
+        "Free Wi-Fi",
+        "./src/assets/wifi.svg"
+      ],
+      "excursions": [
+        "Excursions",
+        "./src/assets/excursion.png"
+      ],
+      "threeMealsPerDay": [
+        "Three meals",
+        "./src/assets/meal.png"
+      ],
+      "equipmentRental": [
+        "Equipment rental",
+        "./src/assets/equipment.png"
+      ]
+    },
     "activities": [
       {
         "name": "Sayulita Beach Day",
@@ -411,13 +531,28 @@
       "amount": 400
     },
     "description": "Explore the vibrant surf scene of Florianópolis with this Brazilian Surf Expedition. Known for its beautiful beaches and consistent waves, Florianópolis offers a dynamic surfing experience. This tour features personalized surf lessons, guided surf excursions, and opportunities to enjoy the local culture and cuisine. From surfing the waves to exploring the city, this tour provides an exciting and immersive experience in one of Brazil's top surf destinations.",
-    "included": [
-      "Personal surf lessons",
-      "Free Wi-Fi",
-      "Excursions",
-      "Three meals per day",
-      "Equipment rental"
-    ],
+    "included": {
+      "personalSurfLessons": [
+        "Surf lessons",
+        "./src/assets/surf.png"
+      ],
+      "freeWifi":  [
+        "Free Wi-Fi",
+        "./src/assets/wifi.svg"
+      ],
+      "excursions": [
+        "Excursions",
+        "./src/assets/excursion.png"
+      ],
+      "threeMealsPerDay": [
+        "Three meals",
+        "./src/assets/meal.png"
+      ],
+      "equipmentRental": [
+        "Equipment rental",
+        "./src/assets/equipment.png"
+      ]
+    },
     "activities": [
       {
         "name": "Praia Mole Surf Sessions",
@@ -461,13 +596,28 @@
       "amount": 700
     },
     "description": "Discover the captivating surf scene of Lisbon with the Portuguese Surf Retreat. This tour combines surfing at some of Portugal's best beaches with opportunities to explore the rich culture and history of Lisbon. Enjoy personalized surf lessons, guided surf excursions, and experiences that highlight Lisbon’s vibrant atmosphere. From surf sessions to cultural explorations, this tour offers a perfect blend of adventure and relaxation in one of Europe's most enchanting cities.",
-    "included": [
-      "Personal surf lessons",
-      "Free Wi-Fi",
-      "5 stars",
-      "Three meals per day",
-      "Hotel"
-    ],
+    "included": {
+      "personalSurfLessons": [
+        "Surf lessons",
+        "./src/assets/surf.png"
+      ],
+      "freeWifi":  [
+        "Free Wi-Fi",
+        "./src/assets/wifi.svg"
+      ],
+      "5stars": [
+        "5 stars",
+        "./src/assets/stars.png"
+      ],
+      "threeMealsPerDay": [
+        "Three meals",
+        "./src/assets/meal.png"
+      ],
+      "hotel": [
+        "Hotel",
+        "./src/assets/hotel.png"
+      ]
+    },
     "activities": [
       {
         "name": "Carcavelos Beach Surfing",

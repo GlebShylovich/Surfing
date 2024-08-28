@@ -5,14 +5,15 @@ import logo from "../../img/logo.png";
 import "./Auth.scss";
 
 export default function Auth() {
-  const [isShown, setIsShown] = useState(true);
   const navigate = useNavigate();
+  const [isShown, setIsShown] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
       setIsShown(false);
     }, 5000);
   }, []);
+
   return (
     <>
       {isShown ? (
