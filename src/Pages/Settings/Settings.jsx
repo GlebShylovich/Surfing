@@ -25,7 +25,6 @@ import "./Settings.scss";
 
 export default function Settings() {
   const user = useSelector((state) => state.user);
-  //Инпуты
   const [file, setFile] = useState(null);
   const [avatar, setAvatar] = useState(defaultPic);
   const [username, setUsername] = useState("");
@@ -34,23 +33,19 @@ export default function Settings() {
   const [password, setPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [newPasswordRepeat, setNewPasswordRepeat] = useState("");
-  //Требования
   const [passwordLetters, setPasswordLetters] = useState(true);
   const [passwordLength, setPasswordLength] = useState(true);
   const [passwordAlphabet, setPasswordAlphabet] = useState(true);
   const [usernameLength, setUsernameLength] = useState(true);
-  //Проверки
   const [invalidPassword, setInvalidPassword] = useState(false);
   const [isValidEmail, setIsValidEmail] = useState(true);
   const [isPasswordsMatch, setIsPasswordMatch] = useState(true);
   const [isPasswordInputFocused, setIsPasswordInputFocused] = useState(false);
   const [isFileChosen, setIsFileChosen] = useState(false);
-  //Доп. блоки
   const [showEmailConfirmation, setShowEmailConfirmation] = useState(false);
   const [showPasswordConfirmation, setShowPasswordConfirmation] =
     useState(false);
   const [saveBtn, setSaveBtn] = useState(false);
-  //Ошибки
   const [updateStatus, setUpdateStatus] = useState(false);
   const [isSuccess, setIsSuccess] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -130,7 +125,6 @@ export default function Settings() {
           setSaveBtn(false);
         })
         .catch((error) => {
-          console.error(error);
           setIsSuccess(false);
           setUpdateStatus(true);
         });
