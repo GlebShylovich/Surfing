@@ -4,7 +4,7 @@
 	</desc>
 	<defs>
 		<clipPath id="clip378_3570">
-			<rect id="logout-box-r-line" width="24.000000" height="24.000000" fill="white" fill-opacity="0"/>
+			<rect id="logout-box-r-line" width="24.000000" height="24.000000" fill="$white" fill-opacity="0"/>
 		</clipPath>
 	</defs>
 	<rect id="logout-box-r-line" width="24.000000" height="24.000000" fill="#FFFFFF" fill-opacity="0"/>

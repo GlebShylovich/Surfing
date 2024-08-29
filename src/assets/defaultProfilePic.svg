@@ -4,7 +4,7 @@
 	</desc>
 	<defs>
 		<clipPath id="clip378_3551">
-			<rect id="user-fill" width="43.636364" height="43.636364" transform="translate(29.091797 29.089844)" fill="white" fill-opacity="0"/>
+			<rect id="user-fill" width="43.636364" height="43.636364" transform="translate(29.091797 29.089844)" fill="$white" fill-opacity="0"/>
 		</clipPath>
 	</defs>
 	<circle id="Ellipse 99" r="50.000000" transform="matrix(1 0 0 -1 50 50)" fill="#EAEAEB" fill-opacity="1.000000"/>

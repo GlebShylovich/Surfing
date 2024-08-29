@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { getAuth } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { login, emailValidation } from "../../Common/auth";
+import { login, handleEmail } from "../../Common/auth";
 import { checkEmailExists } from "../../Services/services";
 import PasswordRecovery from "../../Components/PasswordRecovery/PasswordRecovery";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
@@ -19,10 +19,8 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
-
   const auth = getAuth();
   const navigate = useNavigate();
-
   useEffect(() => {
     if (isShowEmailBox) {
       emailRef.current.focus();
@@ -30,29 +28,18 @@ export default function Login() {
       passwordRef.current.focus();
     }
   }, [isShowEmailBox, isShowPasswordBox]);
-
   async function handleEmailBtn(e) {
     e.preventDefault();
     const emailExists = await checkEmailExists(email);
-    if (!email) {
-      setError(true);
-      setIsValidEmail(true);
-      setIsUserExist(true);
-    } else if (!emailValidation(email)) {
-      setError(false);
-      setIsValidEmail(false);
-      setIsUserExist(true);
-    } else if (!emailExists) {
-      setError(false);
-      setIsValidEmail(true);
-      setIsUserExist(false);
-    } else {
-      setError(false);
-      setIsValidEmail(true);
-      setIsUserExist(true);
-      setIsShowEmailBox(false);
-      setIsShowPasswordBox(true);
-    }
+    handleEmail(
+      email,
+      emailExists,
+      setError,
+      setIsValidEmail,
+      setIsUserExist,
+      setIsShowEmailBox,
+      setIsShowPasswordBox
+    );
   }
   function loginUser(e) {
     e.preventDefault();

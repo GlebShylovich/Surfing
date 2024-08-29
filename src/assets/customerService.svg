@@ -4,7 +4,7 @@
 	</desc>
 	<defs>
 		<clipPath id="clip378_3566">
-			<rect id="customer-service-2-fill" width="24.000000" height="24.000000" fill="white" fill-opacity="0"/>
+			<rect id="customer-service-2-fill" width="24.000000" height="24.000000" fill="$white" fill-opacity="0"/>
 		</clipPath>
 	</defs>
 	<rect id="customer-service-2-fill" width="24.000000" height="24.000000" fill="#FFFFFF" fill-opacity="0"/>

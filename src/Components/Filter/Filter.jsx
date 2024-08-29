@@ -1,26 +1,21 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setFilterParams } from "../../Services/slices/filter";
+import data from "../../../tours.json";
 import Slider from "rc-slider";
 import close from "../../assets/close.svg";
-import data from "../../../tours.json";
 import "rc-slider/assets/index.css";
 import "./Filter.scss";
 
 export default function Filter({ setIsFilterOpen, setTours }) {
+  const dispatch = useDispatch();
+  const prices = data.map((item) => item.pricePerNight.amount);
   const [filterTags, setFilterTags] = useState([]);
   const [filteredData, setFilteredData] = useState(data);
-
-  const dispatch = useDispatch();
-
-  const prices = data.map((item) => item.pricePerNight.amount);
   const filterRangeData = useSelector((state) => state.filter);
-
   const initialRange = [filterRangeData.initialMinPrice, filterRangeData.initialMaxPrice];
   const userRange = [filterRangeData.minPrice, filterRangeData.maxPrice];
-
   const [initialRangeState, setInitialRangeState] = useState(initialRange);
-
   const [range, setRange] = useState(
     userRange[0] !== null && userRange[1] !== null ? userRange : initialRange
   );
@@ -50,7 +45,7 @@ export default function Filter({ setIsFilterOpen, setTours }) {
           )
         : true;
 
-      const matchesPrice =
+      const matchesPrice = 
         tour.pricePerNight.amount >= range[0] &&
         tour.pricePerNight.amount <= range[1];
 
@@ -108,7 +103,6 @@ export default function Filter({ setIsFilterOpen, setTours }) {
     return Object.keys(priceFrequency).map((price) => {
       const height = 15 * priceFrequency[price];
       const isInRange = price >= range[0] && price <= range[1];
-
       return (
         <div
           className="filter__bar"

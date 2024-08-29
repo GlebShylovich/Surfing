@@ -4,7 +4,7 @@
 	</desc>
 	<defs>
 		<clipPath id="clip378_3463">
-			<rect id="map-pin-fill" width="20.000000" height="20.000000" fill="white" fill-opacity="0"/>
+			<rect id="map-pin-fill" width="20.000000" height="20.000000" fill="$white" fill-opacity="0"/>
 		</clipPath>
 	</defs>
 	<rect id="map-pin-fill" width="20.000000" height="20.000000" fill="#FFFFFF" fill-opacity="0"/>

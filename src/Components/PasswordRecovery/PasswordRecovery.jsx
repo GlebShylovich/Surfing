@@ -6,9 +6,11 @@ import "./PasswordRecovery.scss";
 export default function PasswordRecovery({ email }) {
   const auth = getAuth();
   const navigate = useNavigate();
+
   useEffect(() => {
     passwordRecovery();
   }, []);
+
   function passwordRecovery() {
     sendPasswordResetEmail(auth, email)
       .then(() => {})
@@ -17,6 +19,7 @@ export default function PasswordRecovery({ email }) {
         const errorMessage = error.message;
       });
   }
+  
   return (
     <div className="passwordRecovery">
       <div className="passwordRecovery__content">

@@ -7,7 +7,7 @@
   width: 100%;
   z-index: 10;
   height: 100%;
-  background: #ffffff;
+  background: $white;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -100,7 +100,7 @@
   }
   .filter__showResults {
     position: fixed;
-    background: #ffffff;
+    background: $white;
     z-index: 11;
     padding: 20px;
     padding-top: 10px;

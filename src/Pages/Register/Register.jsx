@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { getAuth, updateProfile } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { register, emailValidation } from "../../Common/auth";
+import { register, handleEmail } from "../../Common/auth";
 import { useAddData, checkEmailExists } from "../../Services/services";
 import { setUser } from "../../Services/slices/user";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
@@ -23,17 +23,15 @@ export default function Register() {
   const [isShowPasswordBox, setIsShowPasswordBox] = useState(false);
   const [isShowFinishBox, setIsShowFinishBox] = useState(false);
   const [isValidEmail, setIsValidEmail] = useState(true);
-  const [usedEmailError, setUsedEmailError] = useState(false);
+  const [isUserExist, setIsUserExist] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   const usernameRef = useRef(null);
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const auth = getAuth();
   const addDataMutation = useAddData();
-
   useEffect(() => {
     if (isShowNameBox) {
       usernameRef.current.focus();
@@ -43,7 +41,6 @@ export default function Register() {
       passwordRef.current.focus();
     }
   }, [isShowNameBox, isShowEmailBox, isShowPasswordBox]);
-
   function passwordValidation(e) {
     const password = e.target.value;
     setPassword(password);
@@ -57,7 +54,6 @@ export default function Register() {
     setPasswordLetters(/\d/.test(password) && /[a-zA-Z]/.test(password));
     setPasswordAlphabet(/^[a-zA-Z0-9]*$/.test(password));
   }
-
   function handleNameBtn(e) {
     e.preventDefault();
     if (!name) {
@@ -68,32 +64,19 @@ export default function Register() {
       setIsShowEmailBox(true);
     }
   }
-
   async function handleEmailBtn(e) {
     e.preventDefault();
     const emailExists = await checkEmailExists(email);
-    if (!email) {
-      setError(true);
-      setIsValidEmail(true);
-      setUsedEmailError(false);
-      setUsedEmailError(false);
-    } else if (!emailValidation(email)) {
-      setError(false);
-      setIsValidEmail(false);
-      setUsedEmailError(false);
-      setUsedEmailError(false);
-    } else if (emailExists) {
-      setError(false);
-      setIsValidEmail(true);
-      setUsedEmailError(true);
-    } else {
-      setError(false);
-      setIsValidEmail(true);
-      setUsedEmailError(false);
-      setUsedEmailError(false);
-      setIsShowEmailBox(false);
-      setIsShowPasswordBox(true);
-    }
+    handleEmail(
+      email,
+      emailExists,
+      setError,
+      setIsValidEmail,
+      setIsUserExist,
+      setIsShowEmailBox,
+      setIsShowPasswordBox,
+      true
+    );
   }
   function registerUser(e) {
     e.preventDefault();
@@ -110,7 +93,6 @@ export default function Register() {
     setIsShowPasswordBox(false);
     setIsShowFinishBox(true);
   }
-
   function database(user) {
     const object = { email: email, name: name, id: user.uid };
     dispatch(setUser({ email: email, name: name, id: user.uid }));
@@ -118,7 +100,6 @@ export default function Register() {
       updateProfile(user, { displayName: databaseResponse });
     });
   }
-
   return (
     <div className="register">
       {isShowNameBox && (
@@ -187,7 +168,7 @@ export default function Register() {
             >
               <label
                 className={
-                  (error && !email) || !isValidEmail || usedEmailError
+                  (error && !email) || !isValidEmail || !isUserExist
                     ? "register__emailLabel--error"
                     : "register__emailLabel"
                 }
@@ -196,7 +177,7 @@ export default function Register() {
                   ? "Enter your email"
                   : !isValidEmail
                   ? "Check your email spelling"
-                  : usedEmailError
+                  : !isUserExist
                   ? "Email is already in use"
                   : "Your email"}
               </label>
@@ -207,7 +188,7 @@ export default function Register() {
                   setEmail(e.target.value);
                 }}
                 className={
-                  (error && !email) || !isValidEmail || usedEmailError
+                  (error && !email) || !isValidEmail || !isUserExist
                     ? "register__emailInput--error"
                     : "register__emailInput"
                 }

@@ -4,13 +4,15 @@ import { useDeleteUser } from "../../Services/services";
 import "./AccountDelete.scss";
 
 export default function AccountDelete({ user }) {
-  const deleteUserMutation = useDeleteUser();
   const navigate = useNavigate();
+  const deleteUserMutation = useDeleteUser();
+
   function accountDelete(uid) {
     deleteAccount(user);
     deleteUserMutation.mutate(uid);
     navigate("/auth");
   }
+  
   return (
     <div className="accountDelete" onClick={(e)=>e.stopPropagation()}>
       <h1 className="accountDelete__title">Account Deletion</h1>

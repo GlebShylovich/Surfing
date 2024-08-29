@@ -4,7 +4,7 @@
 	</desc>
 	<defs>
 		<clipPath id="clip378_3558">
-			<rect id="heart-3-line" width="24.000000" height="24.000000" fill="white" fill-opacity="0"/>
+			<rect id="heart-3-line" width="24.000000" height="24.000000" fill="$white" fill-opacity="0"/>
 		</clipPath>
 	</defs>
 	<rect id="heart-3-line" width="24.000000" height="24.000000" fill="#FFFFFF" fill-opacity="0"/>

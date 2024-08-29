@@ -7,12 +7,10 @@ import mapPin from "../../assets/mapPin.svg";
 import "./Card.scss";
 
 export default function Card({ info }) {
-  console.log(info);
-  
-  const [count, setCount] = useState(0);
-  const [activeBtn, setActiveBtn] = useState(0);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [count, setCount] = useState(0);
+  const [activeBtn, setActiveBtn] = useState(0);
 
   function handleNext() {
     if (count === info.images.length - 1) {

@@ -3,7 +3,7 @@
 @mixin primaryBtn(
   $bg: #1995f5,
   $border: 1px solid $bg,
-  $color: #ffffff,
+  $color: $white,
   $hoverBg: $mediumBlue,
   $hoverBorder: 1px solid $mediumBlue
 ) {

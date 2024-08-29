@@ -203,7 +203,7 @@
 
             & input:checked + label::before {
               border: 2px solid #1995f5;
-              color: white;
+              color: $white;
               background: #1995f5;
               background-image: url(../../assets/checkmark.svg);
               background-size: cover;
